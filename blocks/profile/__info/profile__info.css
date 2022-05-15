@@ -2,17 +2,19 @@
   display: grid;
   margin: 0;
   grid-template-columns: 24px auto 24px;
-  gap: 16px 18px;
+  gap: 8px 6px;
 }
 
 @media screen and (max-width: 750px) {
   .profile__info {
     margin-top: 26px;
     justify-items: center;
+  }
 }
 
 @media screen and (max-width: 425px) {
   .profile__info {
     grid-template-columns: 18px auto 18px;
-    gap: 10px 10px;
+    gap: 7px 10px;
+  }
 }

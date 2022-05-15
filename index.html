@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Место</title>
   <link rel="stylesheet" href="pages/index.css">
-  <script src="scripts/popup.js"></script>
 </head>
 <body class="body">
   <div class="page">
@@ -17,72 +16,74 @@
         <img class="profile__avatar" src="./images/avatar.jpg">
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив&nbsp;Кусто</h1>
-          <button class="profile__edit-button" onclick="popup()"></button>
+          <button type="button" class="profile__edit-button"></button>
           <p class="profile__subtitle">Исследователь&nbsp;океана</p>
         </div>
-        <button class="profile__add-button"></button>
+        <button type="button" class="profile__add-button"></button>
       </section>
       <section class="elements">
         <ul class="elements__list">
           <li class="element">
-            <img class="element__image" src="./images/elements/el1.jpg" alt="">
+            <img class="element__image" src="./images/elements/el1.jpg" alt="Карачаевск">
             <div class="element__description">
-              <h4 class="element__name">Карачаевск</h4>
+              <h2 class="element__name">Карачаевск</h2>
               <button class="element__like"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__image" src="./images/elements/el2.jpg" alt="">
+            <img class="element__image" src="./images/elements/el2.jpg" alt="Гора Эльбрус">
             <div class="element__description">
-              <h4 class="element__name">Гора Эльбрус</h4>
+              <h2 class="element__name">Гора Эльбрус</h2>
               <button class="element__like"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__image" src="./images/elements/el3.jpg" alt="">
+            <img class="element__image" src="./images/elements/el3.jpg" alt="Домбай">
             <div class="element__description">
-              <h4 class="element__name">Домбай</h4>
+              <h2 class="element__name">Домбай</h2>
               <button class="element__like"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__image" src="./images/elements/el4.jpg" alt="">
+            <img class="element__image" src="./images/elements/el4.jpg" alt="Гора Эльбрус">
             <div class="element__description">
-              <h4 class="element__name">Гора Эльбрус</h4>
+              <h2 class="element__name">Гора Эльбрус</h2>
               <button class="element__like"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__image" src="./images/elements/el5.jpg" alt="">
+            <img class="element__image" src="./images/elements/el5.jpg" alt="Домбай">
             <div class="element__description">
-              <h4 class="element__name">Домбай</h4>
+              <h2 class="element__name">Домбай</h2>
               <button class="element__like"></button>
             </div>
           </li>
           <li class="element">
-            <img class="element__image" src="./images/elements/el6.jpg" alt="">
+            <img class="element__image" src="./images/elements/el6.jpg" alt="Карачаево-Черкессия">
             <div class="element__description">
-              <h4 class="element__name">Карачаево-Черкессия</h4>
+              <h2 class="element__name">Карачаево-Черкессия</h2>
               <button class="element__like"></button>
             </div>
           </li>
         </ul>
       </section>
-      <div class="popup">
-        <div class="popup__container">
-          <fieldset class="form__fields">
-            <h2 class="form__heading">Редактировать профиль</h2>
-            <input type="text" class="form__item form__item_title" value="Жак-Ив Кусто">
-            <input type="text" class="form__item form__item_subtitle" value="Исследователь океана">
-            <input type="submit" class="form__submit-button" value="Сохранить"> 
-          </fieldset>
-          <button class="popup__close-button" onclick="popup()"></button>
-        </div>
-      </div>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022. Johnny Blade</p>
     </footer>
+    <div class="popup popup_opened">
+      <div class="popup__container">
+        <form class="form" name="profile-info" action="index.html" method="post">
+          <h3 class="form__heading">Редактировать профиль</h3>
+          <fieldset class="form__input-container">
+            <input type="text" class="form__item form__item_title" id="profile-title" name="profile-title" value="Жак-Ив Кусто" placeholder="Имя" required>
+            <input type="text" class="form__item form__item_subtitle" id="profile-subtitle" name="profile-subtitle" value="Исследователь океана" placeholder="О себе" required>
+            <button type="submit" class="form__submit-button" value="">Сохранить</button>
+          </fieldset>
+        </form>
+        <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+      </div>
+    </div>
   </div>
 </body>
 </html>
