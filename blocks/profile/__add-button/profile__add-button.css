@@ -1,6 +1,6 @@
 .profile__add-button {
-  background-image: url(../../../images/add-button.svg);
-  background-color: #000;
+  background-image: url(../../../images/add-button-max.svg);
+  background-color: rgba(0, 0, 0, 0);
   background-position: 50% 50%;
   background-repeat: no-repeat;
   border: 2px solid #fff;
@@ -20,5 +20,6 @@
   .profile__add-button {
     width: 100%;
     margin: 34px 0 0 0;
+    background-image: url(../../../images/add-button-min.svg);
   }
 }
