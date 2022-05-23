@@ -1,9 +1,9 @@
 function popupToggle() {
   let popup = document.querySelector('.popup');
-  if (popup.classList('.popup_opened') === null) {
-    popup.classList.add('.popup_opened');
+  if (popup.classListGet('popup_opened') === null) {
+    popup.classList.add('popup_opened');
   } else {
-    popup.classList.remove('.popup_opened');
+    popup.classList.remove('popup_opened');
   }
 }
 
