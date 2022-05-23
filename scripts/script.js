@@ -1,10 +1,6 @@
 function popupToggle() {
   let popup = document.querySelector('.popup');
-  if (popup.classListGet('popup_opened') === null) {
-    popup.classList.add('popup_opened');
-  } else {
-    popup.classList.remove('popup_opened');
-  }
+  popup.classList.toggle('popup_opened');
 }
 /*
 let popbtn = document.querySelector('.popup__edit-button');
