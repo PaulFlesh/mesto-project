@@ -7,5 +7,7 @@ function popupToggle() {
   }
 }
 
-document.querySelector('.popup__edit-button').addEventListener('click', popupToggle);
-document.querySelector('.popup__close-button').addEventListener('click', popupToggle);
+let popbtn = document.querySelector('.popup__edit-button');
+popbtn.addEventListener('click', popupToggle);
+let popbttn = document.querySelector('.popup__close-button');
+popbttn.addEventListener('click', popupToggle);
