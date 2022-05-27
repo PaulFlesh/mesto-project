@@ -60,7 +60,7 @@ function addPlace(placeName, placeImage) {
   placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
-  elementsList.appendChild(placeElement);
+  elementsList.prependChild(placeElement);
 }
 
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
