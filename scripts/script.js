@@ -1,13 +1,15 @@
+// Переключашка попапа профиля
 function popupToggleProfile() {
   let popup = document.querySelector('.popup-profile');
   popup.classList.toggle('popup_opened');
 }
-
+// И нового места
 function popupTogglePlace() {
   let popup = document.querySelector('.popup-place');
   popup.classList.toggle('popup_opened');
 }
 
+// Редактирование профиля через кнопку
 const formElement = document.querySelector('[name="profile-info"]');
 const nameInput = document.querySelector('[name="profile-title"]');
 const jobInput = document.querySelector('[name="profile-subtitle"]');
@@ -15,7 +17,7 @@ let profileName = document.querySelector('.profile__title');
 let profession = document.querySelector('.profile__subtitle');
 
 function formSubmitHandler (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы
     profileName.textContent = nameInput.value;
     profession.textContent = jobInput.value;
     popupToggleProfile();
@@ -66,6 +68,7 @@ let elementsList = document.querySelector('.elements__list');
   };
 }*/
 
+// Функция создания карточки из шаблона
 function addPlace(placeName, placeImage) {
   const placeTemplate = document.querySelector('#element-template').content;
   const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
@@ -78,6 +81,7 @@ function addPlace(placeName, placeImage) {
   elementsList.appendChild(placeElement);
 }
 
+// Работа кнопки нового места
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 addPlaceButton.addEventListener('click', function () {
   const placeName = document.querySelector('#element-title');
