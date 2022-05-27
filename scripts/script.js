@@ -1,3 +1,13 @@
+function popupToggleProfile() {
+  let popup = document.querySelector('.popup-profile');
+  popup.classList.toggle('popup_opened');
+}
+
+function popupTogglePlace() {
+  let popup = document.querySelector('.popup-place');
+  popup.classList.toggle('popup_opened');
+}
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -58,17 +68,7 @@ addPlaceButton.addEventListener('click', function () {
   const placeName = document.querySelector('#element-title');
   const placeImage = document.querySelector('#element-image');
   addPlace(placeName.value, placeImage.value);
-  //renderHasSongs();
   placeName.value = '';
   placeImage.value = '';
+  popupTogglePlace();
 });
-
-function popupToggleProfile() {
-  let popup = document.querySelector('.popup-profile');
-  popup.classList.toggle('popup_opened');
-}
-
-function popupTogglePlace() {
-  let popup = document.querySelector('.popup-place');
-  popup.classList.toggle('popup_opened');
-}
