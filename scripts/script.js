@@ -18,6 +18,7 @@ function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
     profileName.textContent = nameInput.value;
     profession.textContent = jobInput.value;
+    popupToggleProfile();
 }
 
 formElement.addEventListener('submit', formSubmitHandler); 
