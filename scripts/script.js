@@ -8,6 +8,20 @@ function popupTogglePlace() {
   popup.classList.toggle('popup_opened');
 }
 
+const formElement = document.querySelector('[name="profile-info"]');
+const nameInput = document.querySelector('[name="profile-title"]');
+const jobInput = document.querySelector('[name="profile-subtitle"]');
+let profileName = document.querySelector('.profile__title');
+let profession = document.querySelector('.profile__subtitle');
+
+function formSubmitHandler (evt) {
+    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+    profileName.textContent = nameInput.value;
+    profession.textContent = jobInput.value;
+}
+
+formElement.addEventListener('submit', formSubmitHandler); 
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -72,3 +86,4 @@ addPlaceButton.addEventListener('click', function () {
   placeImage.value = '';
   popupTogglePlace();
 });
+
