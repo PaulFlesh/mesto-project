@@ -37,7 +37,7 @@ const initialCards = [
 
 let elementsList = document.querySelector('.elements__list');
 
-function generatePlaces() {
+/*function generatePlaces() {
   const placeTemplate = document.querySelector('#element-template').content;
   const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
   for (i = 0; i < initialCards.length; i++) {
@@ -49,7 +49,7 @@ function generatePlaces() {
     });
     elementsList.appendChild(placeElement);
   };
-}
+}*/
 
 function addPlace(placeName, placeImage) {
   const placeTemplate = document.querySelector('#element-template').content;
