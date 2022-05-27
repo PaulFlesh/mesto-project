@@ -45,7 +45,7 @@ function addPlace(placeName, placeImage) {
   placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
-  elementsContainer.append(placeElement);
+  elementsContainer.appendChild(placeElement);
 }
 
 const addPlaceButton = document.querySelector('.form__submit-button_action_create');
