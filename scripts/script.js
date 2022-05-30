@@ -58,6 +58,10 @@ const placeTemplate = document.querySelector('#element-template').content.queryS
 
 const createCard = function(data) {
   const placeElement = placeTemplate.cloneNode(true);
+  const placeImage = placeElement.querySelector('.element__image');
+  const placeName = placeElement.querySelector('.element__name');
+  placeImage.src = initialCards.link;
+  placeName = initialCards.name;
   return placeElement;
 }
 const place = createCard(initialCards[0]);
