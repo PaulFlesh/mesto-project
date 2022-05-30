@@ -60,7 +60,7 @@ const createCard = function(data) {
   const placeElement = placeTemplate.cloneNode(true);
   return placeElement;
 }
-const place = createCard();
+const place = createCard(initialCards[0]);
 elementsList.appendChild(place);
 
 /*
