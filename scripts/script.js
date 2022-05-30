@@ -53,15 +53,14 @@ const initialCards = [
 ];
 
 let elementsList = document.querySelector('.elements__list');
-const placeTemplate = document.querySelector('#element-template').content;
-
+const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
 const createCard = function(data) {
   const placeElement = placeTemplate.cloneNode(true);
   const placeImage = placeElement.querySelector('.element__image');
+  placeImage.src = initialCards[0].link;
   const placeName = placeElement.querySelector('.element__name');
-  placeImage.src = initialCards.link;
-  placeName.textContent = initialCards.name;
+  placeName.textContent = initialCards[0].name;
   return placeElement;
 }
 const place = createCard(initialCards[0]);
