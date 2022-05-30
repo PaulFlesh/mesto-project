@@ -61,7 +61,7 @@ const createCard = function(data) {
   return placeElement;
 }
 const place = createCard();
-elementsList.appendChild(placeElement);
+elementsList.appendChild(place);
 
 /*
 for (i = 0; i < initialCards.length; i++) {
