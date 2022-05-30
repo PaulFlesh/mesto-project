@@ -58,17 +58,27 @@ const placeTemplate = document.querySelector('#element-template').content.queryS
 const createCard = function(data) {
   const placeElement = placeTemplate.cloneNode(true);
   const placeImage = placeElement.querySelector('.element__image');
-  placeImage.src = initialCards[0].link;
+  placeImage.src = initialCards.link;
   const placeName = placeElement.querySelector('.element__name');
-  placeName.textContent = initialCards[0].name;
+  placeName.textContent = initialCards.name;
   const placeLike = placeElement.querySelector('.element__like');
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
   return placeElement;
 }
-const place = createCard(initialCards[0]);
-elementsList.appendChild(place);
+
+const renderCard = function(data, container) {
+  const place = createCard(item);
+  elementsList.appendChild(place);
+}
+
+initialCards.forEach(function(item) {
+  renderCard(item, elementsList);
+});
+
+
+
 
 /*
 for (i = 0; i < initialCards.length; i++) {
