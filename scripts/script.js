@@ -58,9 +58,9 @@ const placeTemplate = document.querySelector('#element-template').content.queryS
 const createCard = function(data) {
   const placeElement = placeTemplate.cloneNode(true);
   const placeImage = placeElement.querySelector('.element__image');
-  placeImage.src = initialCards.link;
+  placeImage.src = initialCards['link'];
   const placeName = placeElement.querySelector('.element__name');
-  placeName.textContent = initialCards.name;
+  placeName.textContent = initialCards['name'];
   const placeLike = placeElement.querySelector('.element__like');
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
