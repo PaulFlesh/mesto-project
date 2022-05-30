@@ -56,7 +56,7 @@ let elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content;
 const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
 
-for (i = 0; i < initialCards.length; i++) {
+for (i = 0; i < initialCards.length - 1; i++) {
   placeElement.querySelector('.element__name').textContent = initialCards[i].name;
   placeElement.querySelector('.element__image').src = initialCards[i].link;
   /*placeElement.querySelector('.element__image').alt = initialCards[name];
