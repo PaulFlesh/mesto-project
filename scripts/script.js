@@ -53,19 +53,27 @@ const initialCards = [
 ];
 
 let elementsList = document.querySelector('.elements__list');
-const placeTemplate = document.querySelector('#element-template').content;
-const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
+const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
+
+const createCard = function(data) {
+  const placeElement = placeTemplate.cloneNode(true);
+  return placeElement;
+}
+const place = createCard();
+elementsList.appendChild(placeElement);
+
+/*
 for (i = 0; i < initialCards.length; i++) {
-  placeElement.querySelector('.element__name').textContent += initialCards[i].name;
-  placeElement.querySelector('.element__image').src += initialCards[i].link;
+  placeElement.querySelector('.element__name').textContent = initialCards[i].name;
+  placeElement.querySelector('.element__image').src = initialCards[i].link;
   /*placeElement.querySelector('.element__image').alt = initialCards[name];
   placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
-  });*/
+  });
   elementsList.appendChild(placeElement);
 };
-
+*/
 
 // Функция создания карточки из шаблона
 function addPlace(placeName, placeImage) {
