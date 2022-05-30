@@ -69,7 +69,7 @@ const createCard = function(data) {
 }
 
 const renderCard = function(data, container) {
-  const place = createCard(item);
+  const place = createCard(data);
   elementsList.appendChild(place);
 }
 
