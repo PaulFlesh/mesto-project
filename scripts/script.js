@@ -57,8 +57,8 @@ const placeTemplate = document.querySelector('#element-template').content;
 const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
 
 for (i = 0; i < initialCards.length; i++) {
-  placeElement.querySelector('.element__name').textContent = initialCards.name;
-  placeElement.querySelector('.element__image').src = initialCards.link;
+  placeElement.querySelector('.element__name').textContent = initialCards.name[i];
+  placeElement.querySelector('.element__image').src = initialCards.link[i];
   /*placeElement.querySelector('.element__image').alt = initialCards[name];
   placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
