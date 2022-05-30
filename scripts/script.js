@@ -53,7 +53,7 @@ const initialCards = [
 ];
 
 let elementsList = document.querySelector('.elements__list');
-const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
+const placeTemplate = document.querySelector('#element-template').content;
 
 
 const createCard = function(data) {
