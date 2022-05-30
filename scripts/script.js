@@ -67,6 +67,7 @@ function generatePlaces() {
     elementsList.appendChild(placeElement);
   };
 }
+generatePlaces();
 
 // Функция создания карточки из шаблона
 function addPlace(placeName, placeImage) {
