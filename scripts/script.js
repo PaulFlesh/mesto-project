@@ -61,7 +61,7 @@ const createCard = function(data) {
   const placeImage = placeElement.querySelector('.element__image');
   const placeName = placeElement.querySelector('.element__name');
   placeImage.src = initialCards.link;
-  placeName = initialCards.name;
+  placeName.textContent = initialCards.name;
   return placeElement;
 }
 const place = createCard(initialCards[0]);
