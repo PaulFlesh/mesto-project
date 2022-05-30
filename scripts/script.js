@@ -55,13 +55,14 @@ const initialCards = [
 let elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
-const createCard = function(data) {
+const createCard = function(initialCards) {
   const placeElement = placeTemplate.cloneNode(true);
   const placeImage = placeElement.querySelector('.element__image');
-  placeImage.src = initialCards['link'];
   const placeName = placeElement.querySelector('.element__name');
-  placeName.textContent = initialCards['name'];
   const placeLike = placeElement.querySelector('.element__like');
+  placeImage.src = initialCards.link;
+  placeImage.alt = initialCards.name;
+  placeName.textContent = initialCards.name;
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
