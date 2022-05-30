@@ -61,6 +61,10 @@ const createCard = function(data) {
   placeImage.src = initialCards[0].link;
   const placeName = placeElement.querySelector('.element__name');
   placeName.textContent = initialCards[0].name;
+  const placeLike = placeElement.querySelector('.element__like');
+  placeLike.addEventListener('click', function (evt) {
+    evt.target.classList.toggle('element__like_active');
+  });
   return placeElement;
 }
 const place = createCard(initialCards[0]);
