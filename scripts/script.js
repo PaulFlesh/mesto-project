@@ -60,12 +60,33 @@ const initialCards = [
 const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
+// тут оптимизация
+const placeElement = placeTemplate.cloneNode(true);
+const placeImage = placeElement.querySelector('.element__image');
+const placeName = placeElement.querySelector('.element__name');
+const placeLike = placeElement.querySelector('.element__like');
+
 const handleClickImage = function popupToggleImage() {
   const popupBtn = document.querySelector('.popup-image');
   popupBtn.classList.toggle('popup_opened');
   const popupPic = document.querySelector('.popup__pic');
 }
 
+const createCard = function(initialCards) {
+  //const placeElement = placeTemplate.cloneNode(true);
+  //const placeImage = placeElement.querySelector('.element__image');
+  placeImage.src = initialCards.link;
+  //const placeName = placeElement.querySelector('.element__name');
+  placeName.textContent = initialCards.name;
+  //const placeLike = placeElement.querySelector('.element__like');
+  placeLike.addEventListener('click', function (evt) {
+    evt.target.classList.toggle('element__like_active');
+  });
+  placeImage.addEventListener('click', handleClickImage);
+  return placeElement;
+}
+
+/* Тоже пока рабочая
 const createCard = function(initialCards) {
   const placeElement = placeTemplate.cloneNode(true);
   const placeImage = placeElement.querySelector('.element__image');
@@ -79,6 +100,7 @@ const createCard = function(initialCards) {
   placeImage.addEventListener('click', handleClickImage);
   return placeElement;
 }
+*/
 
 const renderCard = function(data, container) {
   const place = createCard(data);
@@ -89,20 +111,24 @@ initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
 
-
-/*
-for (i = 0; i < initialCards.length; i++) {
-  placeElement.querySelector('.element__name').textContent = initialCards[i].name;
-  placeElement.querySelector('.element__image').src = initialCards[i].link;
-  /*placeElement.querySelector('.element__image').alt = initialCards[name];
+// Функция создания карточки из шаблона (пока рабочая)
+//function addPlace(placeName, placeImage) {
+function addPlace(plName, plImage) {
+  //const placeElement = placeTemplate.cloneNode(true);
+  //placeElement.querySelector('.element__name').textContent = placeName;
+  placeName.textContent = plName;
+  //placeElement.querySelector('.element__image').src = placeImage;
+  placeImage.src = plImage;
+  //placeElement.querySelector('.element__image').alt = placeName;
+  placeImage.alt = plName;
   placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
-  elementsList.appendChild(placeElement);
-};
-*/
+  elementsList.insertBefore(placeElement, elementsList.firstChild);
+}
 
-// Функция создания карточки из шаблона
+// Функция создания карточки из шаблона (пока рабочая)
+/*
 function addPlace(placeName, placeImage) {
   const placeTemplate = document.querySelector('#element-template').content;
   const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
@@ -112,9 +138,9 @@ function addPlace(placeName, placeImage) {
   placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
-  //elementsList.appendChild(placeElement);
   elementsList.insertBefore(placeElement, elementsList.firstChild);
 }
+*/
 
 // Работа кнопки нового места
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
