@@ -59,6 +59,10 @@ const initialCards = [
 
 const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
+const placeElement = placeTemplate.cloneNode(true);
+const placeImage = placeElement.querySelector('.element__image');
+const placeName = placeElement.querySelector('.element__name');
+const placeLike = placeElement.querySelector('.element__like');
 
 const handleClickImage = function popupToggleImage() {
   const popupBtn = document.querySelector('.popup-image');
@@ -66,20 +70,17 @@ const handleClickImage = function popupToggleImage() {
   const popupPic = document.querySelector('.popup__pic');
 }
 
+// Создание карточки из массива initialCards
 const createCard = function(initialCards) {
-  const placeElement = placeTemplate.cloneNode(true);
-  const placeImage = placeElement.querySelector('.element__image');
   placeImage.src = initialCards.link;
-  const placeName = placeElement.querySelector('.element__name');
   placeName.textContent = initialCards.name;
-  const placeLike = placeElement.querySelector('.element__like');
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
   placeImage.addEventListener('click', handleClickImage);
   return placeElement;
 }
-
+// Рендер всех карточек массива
 const renderCard = function(data, container) {
   const place = createCard(data);
   elementsList.appendChild(place);
@@ -89,15 +90,13 @@ initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
 
-// Функция создания карточки из шаблона
-function addPlace(placeName, placeImage) {
-  const placeTemplate = document.querySelector('#element-template').content;
-  const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
-  placeElement.querySelector('.element__name').textContent = placeName;
-  placeElement.querySelector('.element__image').src = placeImage;
-  placeElement.querySelector('.element__image').alt = placeName;
+// Функция создания карточки через попап
+function addPlace(name, image) {
+  placeName.textContent = namee;
+  placeImage.src = image;
+  placeImage.alt = name;
   placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like_active');
+    evt.target.classList.toggle('element__like_active'); // переключашка лайка
   });
   elementsList.appendChild(placeElement);
 }
@@ -105,11 +104,11 @@ function addPlace(placeName, placeImage) {
 // Работа кнопки нового места
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 addPlaceButton.addEventListener('click', function () {
-  const placeName = document.querySelector('#element-title');
-  const placeImage = document.querySelector('#element-image');
-  addPlace(placeName.value, placeImage.value);
-  placeName.value = '';
-  placeImage.value = '';
+  const elName = document.querySelector('#element-title');
+  const elImage = document.querySelector('#element-image');
+  addPlace(elName.value, elImage.value);
+  elName.value = '';
+  elImage.value = '';
   popupTogglePlace();
 });
 
