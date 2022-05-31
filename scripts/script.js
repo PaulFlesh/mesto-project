@@ -55,6 +55,10 @@ const initialCards = [
 let elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
+const handleClickImage = function(data) {
+  console.log(data);
+}
+
 const createCard = function(initialCards) {
   const placeElement = placeTemplate.cloneNode(true);
   const placeImage = placeElement.querySelector('.element__image');
@@ -65,6 +69,7 @@ const createCard = function(initialCards) {
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
+  placeImage.addEventListener('click', handleClickImage);
   return placeElement;
 }
 
@@ -76,8 +81,6 @@ const renderCard = function(data, container) {
 initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
-
-
 
 
 /*
