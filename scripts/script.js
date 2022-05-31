@@ -1,16 +1,16 @@
 // Переключашка попапа профиля
 function popupToggleProfile() {
-  let popup = document.querySelector('.popup-profile');
+  const popup = document.querySelector('.popup-profile');
   popup.classList.toggle('popup_opened');
 }
 // Нового места
 function popupTogglePlace() {
-  let popup = document.querySelector('.popup-place');
+  const popup = document.querySelector('.popup-place');
   popup.classList.toggle('popup_opened');
 }
 // И картинки
 function popupToggleImage() {
-  let popup = document.querySelector('.popup-image');
+  const popup = document.querySelector('.popup-image');
   popup.classList.toggle('popup_opened');
 }
 
@@ -18,8 +18,8 @@ function popupToggleImage() {
 const formElement = document.querySelector('[name="profile-info"]');
 const nameInput = document.querySelector('[name="profile-title"]');
 const jobInput = document.querySelector('[name="profile-subtitle"]');
-let profileName = document.querySelector('.profile__title');
-let profession = document.querySelector('.profile__subtitle');
+const profileName = document.querySelector('.profile__title');
+const profession = document.querySelector('.profile__subtitle');
 
 function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы
@@ -57,11 +57,13 @@ const initialCards = [
   }
 ];
 
-let elementsList = document.querySelector('.elements__list');
+const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
-const handleClickImage = function(data) {
-  console.log(data);
+const handleClickImage = function popupToggleImage() {
+  const popupBtn = document.querySelector('.popup-image');
+  popupBtn.classList.toggle('popup_opened');
+  const popupPic = document.querySelector('.popup__pic');
 }
 
 const createCard = function(initialCards) {
