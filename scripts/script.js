@@ -112,7 +112,8 @@ function addPlace(placeName, placeImage) {
   placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
-  elementsList.appendChild(placeElement);
+  //elementsList.appendChild(placeElement);
+  elementsList.insertBefore(placeElement, elementsList.firstChild);
 }
 
 // Работа кнопки нового места
