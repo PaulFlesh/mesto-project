@@ -1,3 +1,5 @@
 .popup_opened {
-  display: flex;
+  visibility: visible;
+  -moz-backface-visibility: visible;
+  -webkit-backface-visibility: visible;
 }
