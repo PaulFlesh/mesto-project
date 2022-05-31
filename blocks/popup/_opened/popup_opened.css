@@ -1,5 +1,4 @@
 .popup_opened {
+  opacity: 1;
   visibility: visible;
-  -moz-backface-visibility: visible;
-  -webkit-backface-visibility: visible;
 }
