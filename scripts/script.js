@@ -1,11 +1,16 @@
 // Переключашка попапа профиля
 function popupToggleProfile() {
-  let popup = document.querySelector('.popup-profile');
+  const popup = document.querySelector('.popup-profile');
   popup.classList.toggle('popup_opened');
 }
-// И нового места
+// Нового места
 function popupTogglePlace() {
-  let popup = document.querySelector('.popup-place');
+  const popup = document.querySelector('.popup-place');
+  popup.classList.toggle('popup_opened');
+}
+// И картинки
+function popupToggleImage() {
+  const popup = document.querySelector('.popup-image');
   popup.classList.toggle('popup_opened');
 }
 
@@ -13,8 +18,8 @@ function popupTogglePlace() {
 const formElement = document.querySelector('[name="profile-info"]');
 const nameInput = document.querySelector('[name="profile-title"]');
 const jobInput = document.querySelector('[name="profile-subtitle"]');
-let profileName = document.querySelector('.profile__title');
-let profession = document.querySelector('.profile__subtitle');
+const profileName = document.querySelector('.profile__title');
+const profession = document.querySelector('.profile__subtitle');
 
 function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы
@@ -52,20 +57,32 @@ const initialCards = [
   }
 ];
 
-let elementsList = document.querySelector('.elements__list');
+const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
+
+// тут оптимизация
+const placeElement = placeTemplate.cloneNode(true);
+const placeImage = placeElement.querySelector('.element__image');
+const placeName = placeElement.querySelector('.element__name');
+const placeLike = placeElement.querySelector('.element__like');
+
+const handleClickImage = function popupToggleImage() {
+  const popupBtn = document.querySelector('.popup-image');
+  popupBtn.classList.toggle('popup_opened');
+  const popupPic = document.querySelector('.popup__pic');
+}
 
 const createCard = function(initialCards) {
   const placeElement = placeTemplate.cloneNode(true);
   const placeImage = placeElement.querySelector('.element__image');
-  const placeName = placeElement.querySelector('.element__name');
-  const placeLike = placeElement.querySelector('.element__like');
   placeImage.src = initialCards.link;
-  placeImage.alt = initialCards.name;
+  const placeName = placeElement.querySelector('.element__name');
   placeName.textContent = initialCards.name;
+  const placeLike = placeElement.querySelector('.element__like');
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
+  placeImage.addEventListener('click', handleClickImage);
   return placeElement;
 }
 
@@ -78,22 +95,7 @@ initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
 
-
-
-
-/*
-for (i = 0; i < initialCards.length; i++) {
-  placeElement.querySelector('.element__name').textContent = initialCards[i].name;
-  placeElement.querySelector('.element__image').src = initialCards[i].link;
-  /*placeElement.querySelector('.element__image').alt = initialCards[name];
-  placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like_active');
-  });
-  elementsList.appendChild(placeElement);
-};
-*/
-
-// Функция создания карточки из шаблона
+// Функция создания карточки из шаблона (пока рабочая)
 function addPlace(placeName, placeImage) {
   const placeTemplate = document.querySelector('#element-template').content;
   const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
@@ -103,7 +105,7 @@ function addPlace(placeName, placeImage) {
   placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
-  elementsList.appendChild(placeElement);
+  elementsList.insertBefore(placeElement, elementsList.firstChild);
 }
 
 // Работа кнопки нового места
