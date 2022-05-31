@@ -89,19 +89,6 @@ initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
 
-
-/*
-for (i = 0; i < initialCards.length; i++) {
-  placeElement.querySelector('.element__name').textContent = initialCards[i].name;
-  placeElement.querySelector('.element__image').src = initialCards[i].link;
-  /*placeElement.querySelector('.element__image').alt = initialCards[name];
-  placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like_active');
-  });
-  elementsList.appendChild(placeElement);
-};
-*/
-
 // Функция создания карточки из шаблона
 function addPlace(placeName, placeImage) {
   const placeTemplate = document.querySelector('#element-template').content;
