@@ -92,7 +92,7 @@ initialCards.forEach(function(item) {
 
 // Функция создания карточки через попап
 function addPlace(name, image) {
-  placeName.textContent = namee;
+  placeName.textContent = name;
   placeImage.src = image;
   placeImage.alt = name;
   placeElement.querySelector('.element__like').addEventListener('click', function (evt) {
