@@ -3,9 +3,14 @@ function popupToggleProfile() {
   let popup = document.querySelector('.popup-profile');
   popup.classList.toggle('popup_opened');
 }
-// И нового места
+// Нового места
 function popupTogglePlace() {
   let popup = document.querySelector('.popup-place');
+  popup.classList.toggle('popup_opened');
+}
+// И картинки
+function popupToggleImage() {
+  let popup = document.querySelector('.popup-image');
   popup.classList.toggle('popup_opened');
 }
 
