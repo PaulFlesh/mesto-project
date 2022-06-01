@@ -61,10 +61,10 @@ const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
 // тут оптимизация
-const placeElement = placeTemplate.cloneNode(true);
+/*const placeElement = placeTemplate.cloneNode(true);
 const placeImage = placeElement.querySelector('.element__image');
 const placeName = placeElement.querySelector('.element__name');
-const placeLike = placeElement.querySelector('.element__like');
+const placeLike = placeElement.querySelector('.element__like');*/
 
 const handleClickImage = function popupToggleImage() {
   const popupBtn = document.querySelector('.popup-image');
@@ -74,6 +74,13 @@ const handleClickImage = function popupToggleImage() {
 
 const createCard = function(initialCards) {
   const placeElement = placeTemplate.cloneNode(true);
+  //
+  const placeBin = placeElement.querySelector('.element__bin');
+  placeBin.addEventListener('click', function () {
+    placeElement.remove();
+    const listItems = elementsList.children;
+  });
+  //
   const placeImage = placeElement.querySelector('.element__image');
   placeImage.src = initialCards.link;
   const placeName = placeElement.querySelector('.element__name');
