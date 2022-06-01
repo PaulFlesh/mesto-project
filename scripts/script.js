@@ -105,9 +105,10 @@ initialCards.forEach(function(item) {
 function addPlace(placeName, placeImage) {
   const placeTemplate = document.querySelector('#element-template').content;
   const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
-  placeElement.querySelector('.element__bin').addEventListener('click', function () {
+  /*placeElement.querySelector('.element__bin').addEventListener('click', function () {
     placeElement.remove();
-  });
+  });*/
+  placeElement.querySelector('.element__bin').addEventListener('click', placeElement.remove());
   placeElement.querySelector('.element__name').textContent = placeName;
   placeElement.querySelector('.element__image').src = placeImage;
   placeElement.querySelector('.element__image').alt = placeName;

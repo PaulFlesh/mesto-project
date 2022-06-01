@@ -13,3 +13,7 @@
   top: 20px;
   right: 20px;
 }
+
+.element__bin:hover {
+  opacity: .6;
+}
