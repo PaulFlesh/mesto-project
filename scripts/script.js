@@ -1,3 +1,13 @@
+const profile = document.querySelector('.profile__info');
+const popupProfile = document.querySelector('.popup-profile');
+function popupToggleProfile(element) {
+  element.classList.toggle('popup_opened');
+}
+profile.querySelector('.profile__edit-button').addEventListener('click', popupToggleProfile(popupProfile));
+popupProfile.querySelector('.popup__close-button').addEventListener('click', popupToggleProfile(popupProfile));
+
+// Переключашка попапа профиля
+/*
 const popupProfile = document.querySelector('.popup-profile');
 popupProfile.querySelector('.popup__close-button').addEventListener('click', function () {
   popupProfile.classList.toggle('popup_opened');
@@ -11,9 +21,16 @@ popupImage.querySelector('.popup__close-button').addEventListener('click', funct
   popupImage.classList.toggle('popup_opened');
 });
 
+const profile = document.querySelector('.profile__info');
+profile.querySelector('.profile__edit-button').addEventListener('click', function () {
+  profile.classList.toggle('popup_opened');
+});
+const popupPlace = document.querySelector('.popup-place');
+popupPlace.querySelector('.popup__close-button').addEventListener('click', function () {
+  popupPlace.classList.toggle('popup_opened');
+});
 
-// Переключашка попапа профиля
-/*
+
 function popupToggleProfile() {
   const popup = document.querySelector('.popup-profile');
   popup.classList.toggle('popup_opened');
