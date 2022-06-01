@@ -1,4 +1,19 @@
+const popupProfile = document.querySelector('.popup-profile');
+popupProfile.querySelector('.popup__close-button').addEventListener('click', function () {
+  popupProfile.classList.toggle('popup_opened');
+});
+const popupPlace = document.querySelector('.popup-place');
+popupPlace.querySelector('.popup__close-button').addEventListener('click', function () {
+  popupPlace.classList.toggle('popup_opened');
+});
+const popupImage = document.querySelector('.popup-image');
+popupImage.querySelector('.popup__close-button').addEventListener('click', function () {
+  popupImage.classList.toggle('popup_opened');
+});
+
+
 // Переключашка попапа профиля
+/*
 function popupToggleProfile() {
   const popup = document.querySelector('.popup-profile');
   popup.classList.toggle('popup_opened');
@@ -13,7 +28,7 @@ function popupToggleImage() {
   const popup = document.querySelector('.popup-image');
   popup.classList.toggle('popup_opened');
 }
-
+*/
 // Редактирование профиля через кнопку
 const formElement = document.querySelector('[name="profile-info"]');
 const nameInput = document.querySelector('[name="profile-title"]');
@@ -61,10 +76,12 @@ const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
 // тут оптимизация
-/*const placeElement = placeTemplate.cloneNode(true);
+/*
+const placeElement = placeTemplate.cloneNode(true);
 const placeImage = placeElement.querySelector('.element__image');
 const placeName = placeElement.querySelector('.element__name');
-const placeLike = placeElement.querySelector('.element__like');*/
+const placeLike = placeElement.querySelector('.element__like');
+*/
 
 const handleClickImage = function popupToggleImage() {
   const popupBtn = document.querySelector('.popup-image');
