@@ -78,7 +78,7 @@ const createCard = function(initialCards) {
   const placeBin = placeElement.querySelector('.element__bin');
   placeBin.addEventListener('click', function () {
     placeElement.remove();
-    const listItems = elementsList.children;
+    //const listItems = elementsList.children;
   });
   //
   const placeImage = placeElement.querySelector('.element__image');
