@@ -74,18 +74,17 @@ const handleClickImage = function popupToggleImage() {
 
 const createCard = function(initialCards) {
   const placeElement = placeTemplate.cloneNode(true);
-  //
+  // Добавляем корзине функцию удаления карточки
   const placeBin = placeElement.querySelector('.element__bin');
   placeBin.addEventListener('click', function () {
     placeElement.remove();
-    //const listItems = elementsList.children;
   });
-  //
   const placeImage = placeElement.querySelector('.element__image');
   placeImage.src = initialCards.link;
   const placeName = placeElement.querySelector('.element__name');
   placeName.textContent = initialCards.name;
   const placeLike = placeElement.querySelector('.element__like');
+  // Добавляем лайку переключашку
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
@@ -106,6 +105,9 @@ initialCards.forEach(function(item) {
 function addPlace(placeName, placeImage) {
   const placeTemplate = document.querySelector('#element-template').content;
   const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
+  placeElement.querySelector('.element__bin').addEventListener('click', function () {
+    placeElement.remove();
+  });
   placeElement.querySelector('.element__name').textContent = placeName;
   placeElement.querySelector('.element__image').src = placeImage;
   placeElement.querySelector('.element__image').alt = placeName;
