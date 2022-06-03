@@ -1,15 +1,15 @@
 // Переключашка попапа профиля
-const toggleProfile = function popupToggleProfile() {
+function popupToggleProfile() {
   document.querySelector('.popup-profile').classList.toggle('popup_opened');
 }
-document.querySelector('.profile__edit-button').addEventListener('click', toggleProfile);
-document.querySelector('.profile-close-btn').addEventListener('click', toggleProfile);
+document.querySelector('.profile__edit-button').addEventListener('click', popupToggleProfile);
+document.querySelector('.profile-close-btn').addEventListener('click', popupToggleProfile);
 // Переключашка попапа нового места
-const togglePlace = function popupTogglePlace() {
+function popupTogglePlace() {
   document.querySelector('.popup-place').classList.toggle('popup_opened');
 }
-document.querySelector('.profile__add-button').addEventListener('click', togglePlace);
-document.querySelector('.place-close-btn').addEventListener('click', togglePlace);
+document.querySelector('.profile__add-button').addEventListener('click', popupTogglePlace);
+document.querySelector('.place-close-btn').addEventListener('click', popupTogglePlace);
 
 // Редактирование профиля через кнопку
 const formElement = document.querySelector('[name="profile-info"]');
