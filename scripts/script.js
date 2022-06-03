@@ -69,6 +69,7 @@ const handleClickImage = function popupToggleImage() {
   const popupBtn = document.querySelector('.popup-image');
   popupBtn.classList.toggle('popup_opened');
   const popupPic = document.querySelector('.popup__pic');
+  popupPic.src = initialCards.src;
 }
 
 const createCard = function(initialCards) {
