@@ -1,4 +1,4 @@
-
+/*
 const toggleProf = function popupToggleProfile() {
   const popupProfile = document.querySelector('.popup-profile');
   popupProfile.classList.toggle('popup_opened');
@@ -6,9 +6,9 @@ const toggleProf = function popupToggleProfile() {
 
 document.querySelector('.profile__edit-button').addEventListener('click', toggleProf);
 document.querySelector('.popup__close-button').addEventListener('click', toggleProf);
-
+*/
 // Переключашка попапа профиля
-/*
+
 const popupProfile = document.querySelector('.popup-profile');
 popupProfile.querySelector('.popup__close-button').addEventListener('click', function () {
   popupProfile.classList.toggle('popup_opened');
@@ -31,7 +31,7 @@ popupPlace.querySelector('.popup__close-button').addEventListener('click', funct
   popupPlace.classList.toggle('popup_opened');
 });
 
-
+/*
 function popupToggleProfile() {
   const popup = document.querySelector('.popup-profile');
   popup.classList.toggle('popup_opened');
