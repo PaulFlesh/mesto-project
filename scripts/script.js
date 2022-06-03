@@ -65,7 +65,7 @@ const placeName = placeElement.querySelector('.element__name');
 const placeLike = placeElement.querySelector('.element__like');
 */
 
-const handleClickImage = function popupToggleImage() {
+function popupToggleImage() {
   const popupBtn = document.querySelector('.popup-image');
   popupBtn.classList.toggle('popup_opened');
   const popupPic = document.querySelector('.popup__pic');
@@ -88,7 +88,7 @@ const createCard = function(initialCards) {
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
-  placeImage.addEventListener('click', handleClickImage);
+  placeImage.addEventListener('click', popupToggleImage);
   return placeElement;
 }
 
