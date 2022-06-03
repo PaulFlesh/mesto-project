@@ -70,6 +70,8 @@ function popupToggleImage() {
   popupBtn.classList.toggle('popup_opened');
   const popupPic = document.querySelector('.popup__pic');
   popupPic.src = document.querySelector('.element__image').src;
+  const popupPicCaption = document.querySelector('.popup__pic-caption');
+  popupPicCaption.textContent = document.querySelector('.element__name').textContent;
 }
 
 const createCard = function(initialCards) {
