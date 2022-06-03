@@ -1,52 +1,22 @@
-/*
-const toggleProf = function popupToggleProfile() {
-  const popupProfile = document.querySelector('.popup-profile');
-  popupProfile.classList.toggle('popup_opened');
-}
-
-document.querySelector('.profile__edit-button').addEventListener('click', toggleProf);
-document.querySelector('.popup__close-button').addEventListener('click', toggleProf);
-*/
 // Переключашка попапа профиля
-
-const popupProfile = document.querySelector('.popup-profile');
-popupProfile.querySelector('.popup__close-button').addEventListener('click', function () {
-  popupProfile.classList.toggle('popup_opened');
-});
-const popupPlace = document.querySelector('.popup-place');
-popupPlace.querySelector('.popup__close-button').addEventListener('click', function () {
-  popupPlace.classList.toggle('popup_opened');
-});
-const popupImage = document.querySelector('.popup-image');
-popupImage.querySelector('.popup__close-button').addEventListener('click', function () {
-  popupImage.classList.toggle('popup_opened');
-});
-
-const profile = document.querySelector('.profile__info');
-profile.querySelector('.profile__edit-button').addEventListener('click', function () {
-  profile.classList.toggle('popup_opened');
-});
-const popupPlace = document.querySelector('.popup-place');
-popupPlace.querySelector('.popup__close-button').addEventListener('click', function () {
-  popupPlace.classList.toggle('popup_opened');
-});
-
-/*
-function popupToggleProfile() {
-  const popup = document.querySelector('.popup-profile');
-  popup.classList.toggle('popup_opened');
+const toggleProfile = function popupToggleProfile() {
+  document.querySelector('.popup-profile').classList.toggle('popup_opened');
 }
-// Нового места
-function popupTogglePlace() {
-  const popup = document.querySelector('.popup-place');
-  popup.classList.toggle('popup_opened');
+document.querySelector('.profile__edit-button').addEventListener('click', toggleProfile);
+document.querySelector('.profile-close-btn').addEventListener('click', toggleProfile);
+// Переключашка попапа нового места
+const togglePlace = function popupTogglePlace() {
+  document.querySelector('.popup-place').classList.toggle('popup_opened');
 }
-// И картинки
-function popupToggleImage() {
-  const popup = document.querySelector('.popup-image');
-  popup.classList.toggle('popup_opened');
+document.querySelector('.profile__add-button').addEventListener('click', togglePlace);
+document.querySelector('.place-close-btn').addEventListener('click', togglePlace);
+// Переключашка изображения с карточки
+const toggleImage = function popupToggleImage() {
+  document.querySelector('.popup-image').classList.toggle('popup_opened');
 }
-*/
+document.querySelector('.element__image').addEventListener('click', toggleImage);
+document.querySelector('.image-close-btn').addEventListener('click', toggleImage);
+
 // Редактирование профиля через кнопку
 const formElement = document.querySelector('[name="profile-info"]');
 const nameInput = document.querySelector('[name="profile-title"]');
