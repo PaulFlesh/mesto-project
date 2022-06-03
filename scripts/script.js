@@ -65,15 +65,6 @@ const placeName = placeElement.querySelector('.element__name');
 const placeLike = placeElement.querySelector('.element__like');
 */
 
-function popupToggleImage() {
-  const popupBtn = document.querySelector('.popup-image');
-  popupBtn.classList.toggle('popup_opened');
-  const popupPic = document.querySelector('.popup__pic');
-  popupPic.src = document.querySelector('.element__image').src;
-  const popupPicCaption = document.querySelector('.popup__pic-caption');
-  popupPicCaption.textContent = document.querySelector('.element__name').textContent;
-}
-
 const createCard = function(initialCards) {
   const placeElement = placeTemplate.cloneNode(true);
   // Добавляем корзине функцию удаления карточки
@@ -103,6 +94,16 @@ initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
 
+function popupToggleImage() {
+  const popupBtn = document.querySelector('.popup-image');
+  popupBtn.classList.toggle('popup_opened');
+  const popupPic = document.querySelector('.popup__pic');
+  popupPic.src = document.querySelector('.element__image').src;
+  const popupPicCaption = document.querySelector('.popup__pic-caption');
+  popupPicCaption.textContent = document.querySelector('.element__name').textContent;
+}
+document.querySelector('.image-close-btn').addEventListener('click', popupToggleImage);
+
 // Функция создания карточки из шаблона (пока рабочая)
 function addPlace(placeName, placeImage) {
   const placeTemplate = document.querySelector('#element-template').content;
@@ -130,11 +131,13 @@ addPlaceButton.addEventListener('click', function () {
   popupTogglePlace();
 });
 
+
+
 // Переключашка изображения с карточки
 /*
 const toggleImage = function popupToggleImage() {
   document.querySelector('.popup-image').classList.toggle('popup_opened');
 }
 document.querySelector('.element__image').addEventListener('click', toggleImage);
-document.querySelector('.image-close-btn').addEventListener('click', toggleImage);
+
 */
