@@ -10,12 +10,6 @@ const togglePlace = function popupTogglePlace() {
 }
 document.querySelector('.profile__add-button').addEventListener('click', togglePlace);
 document.querySelector('.place-close-btn').addEventListener('click', togglePlace);
-// Переключашка изображения с карточки
-const toggleImage = function popupToggleImage() {
-  document.querySelector('.popup-image').classList.toggle('popup_opened');
-}
-document.querySelector('.element__image').addEventListener('click', toggleImage);
-document.querySelector('.image-close-btn').addEventListener('click', toggleImage);
 
 // Редактирование профиля через кнопку
 const formElement = document.querySelector('[name="profile-info"]');
@@ -133,3 +127,9 @@ addPlaceButton.addEventListener('click', function () {
   popupTogglePlace();
 });
 
+// Переключашка изображения с карточки
+const toggleImage = function popupToggleImage() {
+  document.querySelector('.popup-image').classList.toggle('popup_opened');
+}
+document.querySelector('.element__image').addEventListener('click', toggleImage);
+document.querySelector('.image-close-btn').addEventListener('click', toggleImage);
