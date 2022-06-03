@@ -1,18 +1,15 @@
 // Переключашка попапа профиля
 function popupToggleProfile() {
-  const popup = document.querySelector('.popup-profile');
-  popup.classList.toggle('popup_opened');
+  document.querySelector('.popup-profile').classList.toggle('popup_opened');
 }
-// Нового места
+document.querySelector('.profile__edit-button').addEventListener('click', popupToggleProfile);
+document.querySelector('.profile-close-btn').addEventListener('click', popupToggleProfile);
+// Переключашка попапа нового места
 function popupTogglePlace() {
-  const popup = document.querySelector('.popup-place');
-  popup.classList.toggle('popup_opened');
+  document.querySelector('.popup-place').classList.toggle('popup_opened');
 }
-// И картинки
-function popupToggleImage() {
-  const popup = document.querySelector('.popup-image');
-  popup.classList.toggle('popup_opened');
-}
+document.querySelector('.profile__add-button').addEventListener('click', popupTogglePlace);
+document.querySelector('.place-close-btn').addEventListener('click', popupTogglePlace);
 
 // Редактирование профиля через кнопку
 const formElement = document.querySelector('[name="profile-info"]');
@@ -22,10 +19,10 @@ const profileName = document.querySelector('.profile__title');
 const profession = document.querySelector('.profile__subtitle');
 
 function formSubmitHandler (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы
-    profileName.textContent = nameInput.value;
-    profession.textContent = jobInput.value;
-    popupToggleProfile();
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы
+  profileName.textContent = nameInput.value;
+  profession.textContent = jobInput.value;
+  popupToggleProfile();
 }
 
 formElement.addEventListener('submit', formSubmitHandler); 
@@ -61,28 +58,30 @@ const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
 // тут оптимизация
+/*
 const placeElement = placeTemplate.cloneNode(true);
 const placeImage = placeElement.querySelector('.element__image');
 const placeName = placeElement.querySelector('.element__name');
 const placeLike = placeElement.querySelector('.element__like');
-
-const handleClickImage = function popupToggleImage() {
-  const popupBtn = document.querySelector('.popup-image');
-  popupBtn.classList.toggle('popup_opened');
-  const popupPic = document.querySelector('.popup__pic');
-}
+*/
 
 const createCard = function(initialCards) {
   const placeElement = placeTemplate.cloneNode(true);
+  // Добавляем корзине функцию удаления карточки
+  const placeBin = placeElement.querySelector('.element__bin');
+  placeBin.addEventListener('click', function () {
+    placeElement.remove();
+  });
   const placeImage = placeElement.querySelector('.element__image');
   placeImage.src = initialCards.link;
   const placeName = placeElement.querySelector('.element__name');
   placeName.textContent = initialCards.name;
   const placeLike = placeElement.querySelector('.element__like');
+  // Добавляем лайку переключашку
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
-  placeImage.addEventListener('click', handleClickImage);
+  placeImage.addEventListener('click', popupToggleImage);
   return placeElement;
 }
 
@@ -95,10 +94,23 @@ initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
 
+function popupToggleImage() {
+  const popupBtn = document.querySelector('.popup-image');
+  popupBtn.classList.toggle('popup_opened');
+  const popupPic = document.querySelector('.popup__pic');
+  popupPic.src = document.querySelector('.element__image').src;
+  const popupPicCaption = document.querySelector('.popup__pic-caption');
+  popupPicCaption.textContent = document.querySelector('.element__name').textContent;
+}
+document.querySelector('.image-close-btn').addEventListener('click', popupToggleImage);
+
 // Функция создания карточки из шаблона (пока рабочая)
 function addPlace(placeName, placeImage) {
   const placeTemplate = document.querySelector('#element-template').content;
   const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
+  placeElement.querySelector('.element__bin').addEventListener('click', function () {
+    placeElement.remove();
+  });
   placeElement.querySelector('.element__name').textContent = placeName;
   placeElement.querySelector('.element__image').src = placeImage;
   placeElement.querySelector('.element__image').alt = placeName;
@@ -119,3 +131,13 @@ addPlaceButton.addEventListener('click', function () {
   popupTogglePlace();
 });
 
+
+
+// Переключашка изображения с карточки
+/*
+const toggleImage = function popupToggleImage() {
+  document.querySelector('.popup-image').classList.toggle('popup_opened');
+}
+document.querySelector('.element__image').addEventListener('click', toggleImage);
+
+*/

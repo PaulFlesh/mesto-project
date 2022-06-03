@@ -16,10 +16,10 @@
         <img class="profile__avatar" src="./images/avatar.jpg">
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив&nbsp;Кусто</h1>
-          <button type="button" class="profile__edit-button" onclick='popupToggleProfile()'></button>
+          <button type="button" class="profile__edit-button"></button>
           <p class="profile__subtitle">Исследователь&nbsp;океана</p>
         </div>
-        <button type="button" class="profile__add-button" onclick='popupTogglePlace()'></button>
+        <button type="button" class="profile__add-button"></button>
       </section>
       <section class="elements">
         <ul class="elements__list">
@@ -40,7 +40,7 @@
             <button type="submit" class="form__submit-button form__submit-button_edit-profile" value="">Сохранить</button>
           </fieldset>
         </form>
-        <button type="button" class="popup__close-button" aria-label="Закрыть" onclick='popupToggleProfile()'></button>
+        <button type="button" class="popup__close-button profile-close-btn" aria-label="Закрыть"></button>
       </div>
     </div>
     <div class="popup popup-place">
@@ -53,19 +53,20 @@
             <button type="submit" class="form__submit-button form__submit-button_create-element">Создать</button>
           </fieldset>
         </form>
-        <button type="button" class="popup__close-button" aria-label="Закрыть" onclick='popupTogglePlace()'></button>
+        <button type="button" class="popup__close-button place-close-btn" aria-label="Закрыть"></button>
       </div>
     </div>
     <div class="popup popup-image">
       <div class="popup__img-container">
         <img class="popup__pic" src="" alt="">
         <p class="popup__pic-caption"></p>       
-        <button type="button" class="popup__close-button" aria-label="Закрыть" onclick='popupToggleImage()'></button>
+        <button type="button" class="popup__close-button image-close-btn" aria-label="Закрыть"></button>
       </div>
     </div>
   </div>
   <template id="element-template">
     <li class="element">
+      <button type="button" class="element__bin"></button>
       <img class="element__image" src="" alt="">
       <div class="element__description">
         <h2 class="element__name"></h2>
