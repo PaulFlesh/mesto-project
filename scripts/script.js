@@ -1,10 +1,11 @@
-const profile = document.querySelector('.profile__info');
-const popupProfile = document.querySelector('.popup-profile');
-function popupToggleProfile(element) {
-  element.classList.toggle('popup_opened');
+
+const toggleProf = function popupToggleProfile() {
+  const popupProfile = document.querySelector('.popup-profile');
+  popupProfile.classList.toggle('popup_opened');
 }
-profile.querySelector('.profile__edit-button').addEventListener('click', popupToggleProfile(popupProfile));
-popupProfile.querySelector('.popup__close-button').addEventListener('click', popupToggleProfile(popupProfile));
+
+document.querySelector('.profile__edit-button').addEventListener('click', toggleProf);
+document.querySelector('.popup__close-button').addEventListener('click', toggleProf);
 
 // Переключашка попапа профиля
 /*
@@ -54,10 +55,10 @@ const profileName = document.querySelector('.profile__title');
 const profession = document.querySelector('.profile__subtitle');
 
 function formSubmitHandler (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы
-    profileName.textContent = nameInput.value;
-    profession.textContent = jobInput.value;
-    popupToggleProfile();
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы
+  profileName.textContent = nameInput.value;
+  profession.textContent = jobInput.value;
+  popupToggleProfile();
 }
 
 formElement.addEventListener('submit', formSubmitHandler); 
