@@ -128,8 +128,10 @@ addPlaceButton.addEventListener('click', function () {
 });
 
 // Переключашка изображения с карточки
+/*
 const toggleImage = function popupToggleImage() {
   document.querySelector('.popup-image').classList.toggle('popup_opened');
 }
 document.querySelector('.element__image').addEventListener('click', toggleImage);
 document.querySelector('.image-close-btn').addEventListener('click', toggleImage);
+*/
