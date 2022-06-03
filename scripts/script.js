@@ -69,7 +69,7 @@ function popupToggleImage() {
   const popupBtn = document.querySelector('.popup-image');
   popupBtn.classList.toggle('popup_opened');
   const popupPic = document.querySelector('.popup__pic');
-  popupPic.src = initialCards.src;
+  popupPic.src = initialCards.link;
 }
 
 const createCard = function(initialCards) {
