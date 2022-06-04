@@ -94,6 +94,7 @@ initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
 
+// Модальное окно с картинкой
 function popupToggleImage() {
   const popupBtn = document.querySelector('.popup-image');
   popupBtn.classList.toggle('popup_opened');
