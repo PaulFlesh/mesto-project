@@ -1,30 +1,3 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 // Объявление констант профиля на странице и полей окна редактирования
 const formElement = document.querySelector('[name="profile-info"]');
 const nameInput = document.querySelector('[name="profile-title"]');
@@ -37,33 +10,44 @@ const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
 // Создание переключашек модальных окон профиля и нового места
-const togglePopup = function (popup) {
-  popup.classList.toggle('popup_opened')
+const openPopup = function (popup) {
+  popup.classList.add('popup_opened')
 }
 
-const handleClickProfile = function () {
-  togglePopup(profilePopup);    
+const closePopup = function (popup) {
+  popup.classList.remove('popup_opened')
 }
 
-const handleClickPlace = function () {
-  togglePopup(placePopup);    
+const openProfilePopup = function () {
+  openPopup(profilePopup);    
 }
 
-document.querySelector('.profile__edit-button').addEventListener('click', handleClickProfile);
-document.querySelector('.profile-close-btn').addEventListener('click', handleClickProfile);
+const closeProfilePopup = function () {
+  closePopup(profilePopup);    
+}
 
-document.querySelector('.profile__add-button').addEventListener('click', handleClickPlace);
-document.querySelector('.place-close-btn').addEventListener('click', handleClickPlace);
+const openPlacePopup = function () {
+  openPopup(placePopup);    
+}
+
+const closePlacePopup = function () {
+  closePopup(placePopup);    
+}
+
+document.querySelector('.profile__edit-button').addEventListener('click', openProfilePopup);
+document.querySelector('.profile-close-btn').addEventListener('click', closeProfilePopup);
+
+document.querySelector('.profile__add-button').addEventListener('click', openPlacePopup);
+document.querySelector('.place-close-btn').addEventListener('click', closePlacePopup);
 
 // Функция перезаписи информации профиля
-function formSubmitHandler (evt) {
+function submitProfileForm (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы
   profileName.textContent = nameInput.value;
   profession.textContent = jobInput.value;
-  handleClickProfile();
+  closeProfilePopup();
 }
-
-formElement.addEventListener('submit', formSubmitHandler); 
+formElement.addEventListener('submit', submitProfileForm); 
 
 // Объявление констант окна картинок
 const popupImage = document.querySelector('.popup_image');
@@ -71,17 +55,21 @@ const popupPic = popupImage.querySelector('.popup__pic');
 const popupPicCaption = document.querySelector('.popup__pic-caption');
 
 // Функция открытия окна с указанной картинкой (из массива)
-const handleClickImage = function (data) {
+const openImage = (data) => {
   popupPic.src = data.link;
   popupPicCaption.textContent = data.name;
-  togglePopup(popupImage);    
+  openPopup(popupImage);
+  return data;
 }
-document.querySelector('.image-close-btn').addEventListener('click', handleClickImage);
+
+const closeImage = () => closePopup(popupImage);
+
+document.querySelector('.image-close-btn').addEventListener('click', closeImage);
 
 const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
-const createCard = function(data) {
+const createCard = (data) => {
   const placeElement = placeTemplate.cloneNode(true);
   const placeName = placeElement.querySelector('.element__name');
   const placeImage = placeElement.querySelector('.element__image');
@@ -90,10 +78,13 @@ const createCard = function(data) {
   placeName.textContent = data.name;
   placeImage.src = data.link;
   placeImage.alt = data.name;
-  placeImage.addEventListener('click', () => handleClickImage(data));
+  placeImage.addEventListener('click', () => openImage(data));
   placeBin.addEventListener('click', function () {
     placeElement.remove();
   });
+  const toggleLike = function (evt) {
+    evt.target.classList.toggle('element__like_active');
+  };
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
@@ -104,7 +95,7 @@ const createCard = function(data) {
 const clickImage = function (plName, plImage) {
   popupPic.src = plImage;
   popupPicCaption.textContent = plName;
-  togglePopup(popupImage);    
+  openPopup(popupImage);    
 }
 
 // Функция создания карточки из модального окна
@@ -124,23 +115,25 @@ function addPlace(plName, plImage) {
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
-  elementsList.insertBefore(placeElement, elementsList.firstChild);
+  elementsList.prepend(placeElement);
 }
 
 // Работа кнопки создания нового места
+
+const placeTemplateName = document.querySelector('#element-title');
+const placeTemplateImage = document.querySelector('#element-image');
+
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 addPlaceButton.addEventListener('click', function () {
-  const placeName = document.querySelector('#element-title');
-  const placeImage = document.querySelector('#element-image');
-  addPlace(placeName.value, placeImage.value);
-  placeName.value = '';
-  placeImage.value = '';
-  handleClickPlace();
+  addPlace(placeTemplateName.value, placeTemplateImage.value);
+  placeTemplateName.value = '';
+  placeTemplateImage.value = '';
+  closePlacePopup();
 });
 
 const renderCard = function(data, container) {
   const place = createCard(data);
-  container.appendChild(place);
+  container.append(place);
 }
 
 initialCards.forEach(function(item) {

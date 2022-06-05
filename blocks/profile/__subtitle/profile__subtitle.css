@@ -6,6 +6,10 @@
   margin: 0;
   padding: 0;
   grid-column: 2;
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 415px) {
