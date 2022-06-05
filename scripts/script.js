@@ -33,8 +33,8 @@ const profileName = document.querySelector('.profile__title');
 const profession = document.querySelector('.profile__subtitle');
 
 // Объявление модальных окон 
-const profilePopup = document.querySelector('.popup-profile');
-const placePopup = document.querySelector('.popup-place');
+const profilePopup = document.querySelector('.popup_profile');
+const placePopup = document.querySelector('.popup_place');
 
 // Создание переключашек модальных окон профиля и нового места
 const togglePopup = function (popup) {
@@ -66,17 +66,14 @@ function formSubmitHandler (evt) {
 formElement.addEventListener('submit', formSubmitHandler); 
 
 // Объявление констант окна картинок
-const popupImage = document.querySelector('.popup-image');
+const popupImage = document.querySelector('.popup_image');
 const popupPic = popupImage.querySelector('.popup__pic');
 const popupPicCaption = document.querySelector('.popup__pic-caption');
 
 // Функция открытия окна с указанной картинкой (из массива)
 const handleClickImage = function (data) {
   popupPic.src = data.link;
-  console.dir(popupPic);
   popupPicCaption.textContent = data.name;
-  console.dir(popupPicCaption);
-  console.log(data);
   togglePopup(popupImage);    
 }
 document.querySelector('.image-close-btn').addEventListener('click', handleClickImage);
@@ -111,7 +108,7 @@ const clickImage = function (plName, plImage) {
 }
 document.querySelector('.image-close-btn').addEventListener('click', handleClickImage);
 
-// Функция создания карточки из шаблона (пока рабочая)
+// Функция создания карточки из модального окна
 function addPlace(plName, plImage) {
   const placeElement = placeTemplate.cloneNode(true);
   const placeName = placeElement.querySelector('.element__name');
@@ -131,7 +128,7 @@ function addPlace(plName, plImage) {
   elementsList.insertBefore(placeElement, elementsList.firstChild);
 }
 
-// Работа кнопки нового места
+// Работа кнопки создания нового места
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 addPlaceButton.addEventListener('click', function () {
   const placeName = document.querySelector('#element-title');
