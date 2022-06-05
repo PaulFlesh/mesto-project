@@ -139,7 +139,7 @@ addPlaceButton.addEventListener('click', function () {
   addPlace(placeName.value, placeImage.value);
   placeName.value = '';
   placeImage.value = '';
-  handleClickImage();
+  handleClickPlace();
 });
 
 const renderCard = function(data, container) {
