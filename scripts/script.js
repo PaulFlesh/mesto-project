@@ -106,7 +106,6 @@ const clickImage = function (plName, plImage) {
   popupPicCaption.textContent = plName;
   togglePopup(popupImage);    
 }
-document.querySelector('.image-close-btn').addEventListener('click', handleClickImage);
 
 // Функция создания карточки из модального окна
 function addPlace(plName, plImage) {
