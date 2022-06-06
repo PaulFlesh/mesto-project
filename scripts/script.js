@@ -81,8 +81,10 @@ const createCard = (data) => {
   placeImage.addEventListener('click', () => openImage(data));
   const removePlace = () => placeElement.remove();
   placeBin.addEventListener('click', () => removePlace());
-  const toggleLike = (el) => el.target.classList.toggle('element__like_active');
-  placeLike.addEventListener('click', () => toggleLike(this));
+  const toggleLike = function (evt) {
+    evt.target.classList.toggle('element__like_active');
+  };
+  placeLike.addEventListener('click', () => toggleLike());
   return placeElement;
 }
 
@@ -96,6 +98,7 @@ const clickImage = function (plName, plImage) {
 */
 // Функция создания карточки из модального окна
 function addPlace(plName, plImage) {
+  /*
   const placeElement = placeTemplate.cloneNode(true);
   const placeName = placeElement.querySelector('.element__name');
   const placeImage = placeElement.querySelector('.element__image');
@@ -111,6 +114,7 @@ function addPlace(plName, plImage) {
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
+  */
   elementsList.prepend(placeElement);
 }
 
