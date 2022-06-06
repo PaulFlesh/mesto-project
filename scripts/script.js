@@ -10,29 +10,14 @@ const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
 // Создание функций открытия/закрытия модальных окон профиля и нового места
-const openPopup = function (popup) {
-  popup.classList.add('popup_opened')
-}
+const openPopup = (popup) => popup.classList.add('popup_opened');
+const closePopup = (popup) => popup.classList.remove('popup_opened');
 
-const closePopup = function (popup) {
-  popup.classList.remove('popup_opened')
-}
+const openProfilePopup = () => openPopup(profilePopup);
+const closeProfilePopup = () => closePopup(profilePopup);
 
-const openProfilePopup = function () {
-  openPopup(profilePopup);    
-}
-
-const closeProfilePopup = function () {
-  closePopup(profilePopup);    
-}
-
-const openPlacePopup = function () {
-  openPopup(placePopup);    
-}
-
-const closePlacePopup = function () {
-  closePopup(placePopup);    
-}
+const openPlacePopup = () => openPopup(placePopup);
+const closePlacePopup =  () => closePopup(placePopup);
 
 document.querySelector('.profile__edit-button').addEventListener('click', openProfilePopup);
 document.querySelector('.profile-close-btn').addEventListener('click', closeProfilePopup);
@@ -85,8 +70,6 @@ const createCard = (data) => {
   placeLike.addEventListener('click', () => toggleLike());
   return placeElement;
 }
-
-// Функция открытия окна с указанной картинкой (из окна нового места)
 
 // Функция создания карточки из модального окна
 function addPlace(plName, plImage) {
