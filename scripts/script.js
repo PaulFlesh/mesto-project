@@ -71,6 +71,15 @@ const createCard = (data) => {
   return placeElement;
 }
 
+const renderCard = (data, container) => {
+  const place = createCard(data);
+  container.prepend(place);
+}
+
+initialCards.forEach(function(item) {
+  renderCard(item, elementsList);
+});
+
 const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
@@ -88,12 +97,3 @@ addPlaceButton.addEventListener('click', function (evt) {
   placeTemplateImage.value = '';
   closePlacePopup();
 })
-
-const renderCard = (data, container) => {
-  const place = createCard(data);
-  container.prepend(place);
-}
-
-initialCards.forEach(function(item) {
-  renderCard(item, elementsList);
-});
