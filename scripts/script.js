@@ -117,7 +117,7 @@ const deployNewPlace = () => {
   createCard(placeTemplateName.value, placeTemplateImage.value);
   placeTemplateName.value = '';
   placeTemplateImage.value = '';
-  elementsList.prepend(placeElement);
+  elementsList.prepend(deployNewPlace);
   closePlacePopup();
 }
 addPlaceButton.addEventListener('click', deployNewPlace());
