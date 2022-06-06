@@ -118,7 +118,7 @@ const deployNewPlace = () => {
   placeName.textContent = placeTemplateName.value;
   placeImage.src = placeTemplateImagel.value;
   placeImage.alt = placeTemplateName.value;
-  elementsList.prepend(deployNewPlace);
+  elementsList.prepend(createCard);
   // Очищаем поля после ввода
   placeTemplateName.value = '';
   placeTemplateImage.value = '';
