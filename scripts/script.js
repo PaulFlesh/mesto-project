@@ -85,8 +85,8 @@ const placeTemplateImage = document.querySelector('#element-image');
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 
 // Функция создания карточки из модального окна
-addPlaceButton.addEventListener('submit', function (evt) {
-  evt.preventDefault();
+addPlaceButton.addEventListener('clock', function () {
+  //evt.preventDefault();
   const data = {
     link: placeTemplateImage.value,
     name: placeTemplateName.value,
