@@ -73,7 +73,7 @@ const createCard = (data) => {
 
 const renderCard = (data, container) => {
   const place = createCard(data);
-  container.prepend(place);
+  container.append(place);
 }
 
 initialCards.forEach(function(item) {
@@ -85,7 +85,7 @@ const placeTemplateImage = document.querySelector('#element-image');
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 
 // Функция создания карточки из модального окна
-addPlaceButton.addEventListener('click', function (evt) {
+addPlaceButton.addEventListener('submit', function (evt) {
   evt.preventDefault();
   const data = {
     link: placeTemplateImage.value,
