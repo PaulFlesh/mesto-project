@@ -90,7 +90,8 @@ const addPlace = () => {
     name: placeTemplateName.value,
     link: placeTemplateImage.value    
   };
-  renderCard(data);
+  createCard(data);
+  elementsList.prepend(data);
   // Очищаем поля после ввода
   placeTemplateName.value = '';
   placeTemplateImage.value = '';
