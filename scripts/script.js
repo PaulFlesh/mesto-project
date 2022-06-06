@@ -95,17 +95,21 @@ const placeTemplateImage = document.querySelector('#element-image');
 
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 
-const deployNewPlace = (fck) => {
-  const fck = {
+const formImage = document.querySelector('[name="element-creation"]');
+
+formImage.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  const data = {
     link: placeTemplateImage.value,
     name: placeTemplateName.value
   }
   // Очищаем поля после ввода
   placeTemplateName.value = '';
   placeTemplateImage.value = '';
+  renderCard(data);
   closePlacePopup();
-  renderCard();
-}
+})
+  
 addPlaceButton.addEventListener('click', deployNewPlace());
 
 const renderCard = (data, container) => {
