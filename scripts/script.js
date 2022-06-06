@@ -90,13 +90,11 @@ function addPlace(plName, plImage) {
   });  
 }
 
-// Работа кнопки создания нового места
-
 const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
 
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
-
+/*
 const deployNewPlace = (data) => {
   const card = createCard(data);
   elementsList.prepend(card);
@@ -106,12 +104,11 @@ const deployNewPlace = (data) => {
   closePlacePopup();
   renderCard();
 }
-addPlaceButton.addEventListener('click', deployNewPlace());
+addPlaceButton.addEventListener('click', deployNewPlace());*/
 
-
-const renderCard = function(data, container) {
+const renderCard = (data, container) => {
   const place = createCard(data);
-  container.append(place);
+  container.prepend(place);
 }
 
 initialCards.forEach(function(item) {
