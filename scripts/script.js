@@ -113,8 +113,8 @@ const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
 
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
-const deployNewPlace = () => {
-  createCard(placeTemplateName.value, placeTemplateImage.value);
+const deployNewPlace = (placeTemplateName, placeTemplateImage) => {
+  createCard();
   placeName.textContent = placeTemplateName.value;
   placeImage.src = placeTemplateImagel.value;
   placeImage.alt = placeTemplateName.value;
