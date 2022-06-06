@@ -97,7 +97,7 @@ const addPlaceButton = document.querySelector('.form__submit-button_create-eleme
 
 const formImage = document.querySelector('[name="element-creation"]');
 
-formImage.addEventListener('submit', function (evt) {
+addPlaceButton.addEventListener('submit', function (evt) {
   evt.preventDefault();
   const data = {
     link: placeTemplateImage.value,
@@ -109,8 +109,8 @@ formImage.addEventListener('submit', function (evt) {
   renderCard(data);
   closePlacePopup();
 })
-  
-addPlaceButton.addEventListener('click', deployNewPlace());
+
+//addPlaceButton.addEventListener('click', deployNewPlace());
 
 const renderCard = (data, container) => {
   const place = createCard(data);
