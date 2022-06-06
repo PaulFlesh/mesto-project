@@ -97,16 +97,16 @@ const addPlaceButton = document.querySelector('.form__submit-button_create-eleme
 
 const formImage = document.querySelector('[name="element-creation"]');
 
-addPlaceButton.addEventListener('submit', function (evt) {
+addPlaceButton.addEventListener('click', function (evt) {
   evt.preventDefault();
   const data = {
     link: placeTemplateImage.value,
     name: placeTemplateName.value
-  }
+  };
+  renderCard(data);
   // Очищаем поля после ввода
   placeTemplateName.value = '';
   placeTemplateImage.value = '';
-  renderCard(data);
   closePlacePopup();
 })
 
