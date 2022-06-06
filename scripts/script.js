@@ -81,7 +81,7 @@ const createCard = (data) => {
   placeImage.addEventListener('click', () => openImage(data));
   const removePlace = () => placeElement.remove();
   placeBin.addEventListener('click', () => removePlace());
-  const toggleLike = (el) => el.classList.toggle('element__like_active');
+  const toggleLike = (el) => el.target.classList.toggle('element__like_active');
   placeLike.addEventListener('click', () => toggleLike(this));
   return placeElement;
 }
