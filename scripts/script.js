@@ -87,16 +87,9 @@ const createCard = (data) => {
 }
 
 // Функция открытия окна с указанной картинкой (из окна нового места)
-/*
-const clickImage = function (plName, plImage) {
-  popupPic.src = plImage;
-  popupPicCaption.textContent = plName;
-  openPopup(popupImage);    
-}
-*/
+
 // Функция создания карточки из модального окна
 function addPlace(plName, plImage) {
-  /*
   const placeElement = placeTemplate.cloneNode(true);
   const placeName = placeElement.querySelector('.element__name');
   const placeImage = placeElement.querySelector('.element__image');
@@ -111,9 +104,7 @@ function addPlace(plName, plImage) {
   });
   placeLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
-  });
-  */
-  elementsList.prepend(placeElement);
+  });  
 }
 
 // Работа кнопки создания нового места
@@ -122,12 +113,15 @@ const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
 
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
-addPlaceButton.addEventListener('click', function () {
-  addPlace(placeTemplateName.value, placeTemplateImage.value);
+const deployNewPlace = () => {
+  createCard(placeTemplateName.value, placeTemplateImage.value);
   placeTemplateName.value = '';
   placeTemplateImage.value = '';
+  return placeElement;
+  elementsList.prepend(placeElement);
   closePlacePopup();
-});
+}
+addPlaceButton.addEventListener('click', deployNewPlace());
 
 const renderCard = function(data, container) {
   const place = createCard(data);
