@@ -80,9 +80,7 @@ const createCard = (data) => {
   placeImage.alt = data.name;
   placeImage.addEventListener('click', () => openImage(data));
   const removePlace = () => placeElement.remove();
-  placeBin.addEventListener('click', /*function () {
-    placeElement.remove();
-  }*/removePlace());
+  placeBin.addEventListener('click', () => removePlace());
   const toggleLike = function (evt) {
     evt.target.classList.toggle('element__like_active');
   };
@@ -93,12 +91,13 @@ const createCard = (data) => {
 }
 
 // Функция открытия окна с указанной картинкой (из окна нового места)
+/*
 const clickImage = function (plName, plImage) {
   popupPic.src = plImage;
   popupPicCaption.textContent = plName;
   openPopup(popupImage);    
 }
-
+*/
 // Функция создания карточки из модального окна
 function addPlace(plName, plImage) {
   const placeElement = placeTemplate.cloneNode(true);
