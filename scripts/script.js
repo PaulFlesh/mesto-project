@@ -113,6 +113,7 @@ const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
 
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
+/*
 const deployNewPlace = (placeTemplateName, placeTemplateImage) => {
   createCard();
   placeName.textContent = placeTemplateName.value;
@@ -126,6 +127,7 @@ const deployNewPlace = (placeTemplateName, placeTemplateImage) => {
   closePlacePopup();
 }
 addPlaceButton.addEventListener('click', deployNewPlace());
+*/
 
 const renderCard = function(data, container) {
   const place = createCard(data);
