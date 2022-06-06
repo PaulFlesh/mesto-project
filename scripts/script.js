@@ -117,6 +117,9 @@ const deployNewPlace = () => {
   createCard(placeTemplateName.value, placeTemplateImage.value);
   placeTemplateName.value = '';
   placeTemplateImage.value = '';
+  placeName.textContent = placeTemplateName.value;
+  placeImage.src = placeTemplateImagel.value;
+  placeImage.alt = placeTemplateName.value;
   elementsList.prepend(deployNewPlace);
   closePlacePopup();
 }
