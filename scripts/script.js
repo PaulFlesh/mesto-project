@@ -9,7 +9,7 @@ const profession = document.querySelector('.profile__subtitle');
 const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
-// Создание переключашек модальных окон профиля и нового места
+// Создание функций открытия/закрытия модальных окон профиля и нового места
 const openPopup = function (popup) {
   popup.classList.add('popup_opened')
 }
@@ -79,9 +79,12 @@ const createCard = (data) => {
   placeImage.src = data.link;
   placeImage.alt = data.name;
   placeImage.addEventListener('click', () => openImage(data));
-  placeBin.addEventListener('click', function () {
+  const removePlace = function () {
     placeElement.remove();
-  });
+  }
+  placeBin.addEventListener('click', /*function () {
+    placeElement.remove();
+  }*/removePlace());
   const toggleLike = function (evt) {
     evt.target.classList.toggle('element__like_active');
   };
