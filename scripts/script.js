@@ -71,37 +71,16 @@ const createCard = (data) => {
   return placeElement;
 }
 
-// Функция создания карточки из модального окна
-function addPlace(plName, plImage) {
-  const placeElement = placeTemplate.cloneNode(true);
-  const placeName = placeElement.querySelector('.element__name');
-  const placeImage = placeElement.querySelector('.element__image');
-  const placeBin = placeElement.querySelector('.element__bin');
-  const placeLike = placeElement.querySelector('.element__like');
-  placeName.textContent = plName;
-  placeImage.src = plImage;
-  placeImage.alt = plName;
-  placeImage.addEventListener('click', () => clickImage(plName, plImage));
-  placeBin.addEventListener('click', function () {
-    placeElement.remove();
-  });
-  placeLike.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like_active');
-  });  
-}
-
 const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
-
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 
-const formImage = document.querySelector('[name="element-creation"]');
-
+// Функция создания карточки из модального окна
 addPlaceButton.addEventListener('click', function (evt) {
   evt.preventDefault();
   const data = {
     link: placeTemplateImage.value,
-    name: placeTemplateName.value
+    name: placeTemplateName.value,
   };
   renderCard(data);
   // Очищаем поля после ввода
@@ -109,8 +88,6 @@ addPlaceButton.addEventListener('click', function (evt) {
   placeTemplateImage.value = '';
   closePlacePopup();
 })
-
-//addPlaceButton.addEventListener('click', deployNewPlace());
 
 const renderCard = (data, container) => {
   const place = createCard(data);
