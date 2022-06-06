@@ -94,17 +94,19 @@ const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
 
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
-/*
+
 const deployNewPlace = (data) => {
-  const card = createCard(data);
-  elementsList.prepend(card);
+  const data = {
+    link: placeTemplateImage.value,
+    name: placeTemplateName.value
+  }
   // Очищаем поля после ввода
   placeTemplateName.value = '';
   placeTemplateImage.value = '';
   closePlacePopup();
   renderCard();
 }
-addPlaceButton.addEventListener('click', deployNewPlace());*/
+addPlaceButton.addEventListener('click', deployNewPlace());
 
 const renderCard = (data, container) => {
   const place = createCard(data);
