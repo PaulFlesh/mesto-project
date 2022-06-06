@@ -79,9 +79,7 @@ const createCard = (data) => {
   placeImage.src = data.link;
   placeImage.alt = data.name;
   placeImage.addEventListener('click', () => openImage(data));
-  const removePlace = function () {
-    placeElement.remove();
-  }
+  const removePlace = () => placeElement.remove();
   placeBin.addEventListener('click', /*function () {
     placeElement.remove();
   }*/removePlace());
