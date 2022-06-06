@@ -118,10 +118,10 @@ const deployNewPlace = () => {
   placeName.textContent = placeTemplateName.value;
   placeImage.src = placeTemplateImagel.value;
   placeImage.alt = placeTemplateName.value;
+  elementsList.prepend(deployNewPlace);
   // Очищаем поля после ввода
   placeTemplateName.value = '';
   placeTemplateImage.value = '';
-  elementsList.prepend(deployNewPlace);
   closePlacePopup();
 }
 addPlaceButton.addEventListener('click', deployNewPlace());
