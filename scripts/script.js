@@ -114,27 +114,16 @@ const placeTemplateImage = document.querySelector('#element-image');
 
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 
-const deployNewPlace = (placeTemplateName, placeTemplateImage) => {
-  
-  
-  const data = {
-    name: placeTemplateName.value,
-    link: placeTemplateImage.value
-  };
-  createCard(data);
-  placeTemplateName.textContent = placeTemplateName.value;
-  placeTemplateImage.src = placeTemplateImage.value;
-  placeTemplateImage.alt = placeTemplateName.value;
-
-  //return createCard;
-  elementsList.prepend(createCard);
+const deployNewPlace = (data) => {
+  const card = createCard(data);
+  elementsList.prepend(card);
   // Очищаем поля после ввода
   placeTemplateName.value = '';
   placeTemplateImage.value = '';
   closePlacePopup();
   renderCard();
 }
-addPlaceButton.addEventListener('click', deployNewPlace());
+//addPlaceButton.addEventListener('click', deployNewPlace());
 
 
 const renderCard = function(data, container) {
