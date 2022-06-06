@@ -95,8 +95,8 @@ const placeTemplateImage = document.querySelector('#element-image');
 
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 
-const deployNewPlace = (data) => {
-  const data = {
+const deployNewPlace = (fck) => {
+  const fck = {
     link: placeTemplateImage.value,
     name: placeTemplateName.value
   }
