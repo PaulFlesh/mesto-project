@@ -123,7 +123,7 @@ const deployNewPlace = (data) => {
   closePlacePopup();
   renderCard();
 }
-//addPlaceButton.addEventListener('click', deployNewPlace());
+addPlaceButton.addEventListener('click', deployNewPlace());
 
 
 const renderCard = function(data, container) {
