@@ -96,9 +96,6 @@ const addPlace = () => {
   };
   const newCard = createCard(data);
   elementsList.prepend(newCard);
-  // Очищаем поля после ввода
-  //placeTemplateName.value = '';
-  //placeTemplateImage.value = '';
   closePlacePopup();
 }
-addPlaceButton.addEventListener('click', () => addPlace());
+formImage.addEventListener('submit', () => addPlace());
