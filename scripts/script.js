@@ -89,7 +89,8 @@ const placeTemplateImage = document.querySelector('#element-image');
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 
 // Функция создания карточки из модального окна
-const addPlace = () => {
+const addPlace = (evt) => {
+  evt.preventDefault();
   const data = {
     name: placeTemplateName.value,
     link: placeTemplateImage.value    
@@ -98,4 +99,4 @@ const addPlace = () => {
   elementsList.prepend(newCard);
   closePlacePopup();
 }
-addPlaceButton.addEventListener('submit', () => addPlace()); // Лучше вешать обработчик на форму, но карточка создается и через 1с получаю 405 ошибку.
+formImage.addEventListener('submit', () => addPlace()); // Лучше вешать обработчик на форму, но карточка создается и через 1с получаю 405 ошибку.
