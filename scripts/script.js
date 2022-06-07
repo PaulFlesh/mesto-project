@@ -1,9 +1,10 @@
-// Объявление констант профиля на странице и полей окна редактирования
+// Объявление констант профиля и формы добавления нового места
 const formElement = document.querySelector('[name="profile-info"]');
 const nameInput = document.querySelector('[name="profile-title"]');
 const jobInput = document.querySelector('[name="profile-subtitle"]');
 const profileName = document.querySelector('.profile__title');
 const profession = document.querySelector('.profile__subtitle');
+const formImage = document.querySelector('[name="element-creation"]');
 
 // Объявление модальных окон 
 const profilePopup = document.querySelector('.popup_profile');
@@ -17,7 +18,10 @@ const openProfilePopup = () => openPopup(profilePopup);
 const closeProfilePopup = () => closePopup(profilePopup);
 
 const openPlacePopup = () => openPopup(placePopup);
-const closePlacePopup =  () => closePopup(placePopup);
+const closePlacePopup = () => {
+  closePopup(placePopup);
+  formImage.reset();
+};
 
 document.querySelector('.profile__edit-button').addEventListener('click', openProfilePopup);
 document.querySelector('.profile-close-btn').addEventListener('click', closeProfilePopup);
@@ -93,8 +97,8 @@ const addPlace = () => {
   const newCard = createCard(data);
   elementsList.prepend(newCard);
   // Очищаем поля после ввода
-  placeTemplateName.value = '';
-  placeTemplateImage.value = '';
+  //placeTemplateName.value = '';
+  //placeTemplateImage.value = '';
   closePlacePopup();
 }
 addPlaceButton.addEventListener('click', () => addPlace());
