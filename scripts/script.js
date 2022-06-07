@@ -99,4 +99,4 @@ function addPlace (evt) {
   elementsList.prepend(newCard);
   closePlacePopup();
 }
-formImage.addEventListener('submit', addPlace); // Лучше вешать обработчик на форму, но карточка создается и через 1с получаю 405 ошибку.
+formImage.addEventListener('submit', addPlace);
