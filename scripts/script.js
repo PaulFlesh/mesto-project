@@ -98,4 +98,4 @@ const addPlace = () => {
   elementsList.prepend(newCard);
   closePlacePopup();
 }
-formImage.addEventListener('submit', () => addPlace());
+addPlaceButton.addEventListener('submit', () => addPlace()); // Лучше вешать обработчик на форму, но карточка создается и через 1с получаю 405 ошибку.
