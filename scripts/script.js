@@ -88,6 +88,17 @@ const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 
+// Валидация кнопки нового места
+function setSubmitButtonState (isFormValid) {
+  if (isFormValid) {
+    addPlaceButton.removeAttribute('disabled');
+    addPlaceButton.classList.remove('form__submit-button_disabled');
+  } else {
+    addPlaceButton.setAttribute('disabled', true);
+    addPlaceButton.classList.add('form__submit-button_disabled');
+  }
+}
+
 // Функция создания карточки из модального окна
 function addPlace (evt) {
   evt.preventDefault();
@@ -100,20 +111,11 @@ function addPlace (evt) {
   setSubmitButtonState (false);
   closePlacePopup();
 }
-formImage.addEventListener('submit', addPlace);
 
-// валидация кнопок
-function setSubmitButtonState (isFormValid) {
-  if (isFormValid) {
-    addPlaceButton.removeAttribute('disabled');
-    addPlaceButton.classList.remove('form__submit-button_disabled');
-  } else {
-    addPlaceButton.setAttribute('disabled', true);
-    addPlaceButton.classList.add('form__submit-button_disabled');
-  }
+function validate (evt) {
+  const isValid = placeTemplateName.value.length > 0 && placeTemplateImage.value.length > 0;
+  setSubmitButtonState (isValid);
 }
 
-formImage.addEventListener('input', function (evt) {
-  const isValid = placeTemplateName.value.length > 0 && placeTemplateImage.value.length > 0;
-  setSubmitButtonState(isValid);
-});
+formImage.addEventListener('submit', addPlace);
+formImage.addEventListener('input', validate);
