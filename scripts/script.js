@@ -113,15 +113,7 @@ function setSubmitButtonState (isFormValid) {
   }
 }
 
-form.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-  addSong(artist.value, title.value);
-  placeTemplateName.value = '';
-  placeTemplateImage.value = '';
-  setSubmitButtonState (false);
-});
-
-form.addEventListener('input', function (evt) {
+formImage.addEventListener('input', function (evt) {
   const isValid = placeTemplateName.value.length > 0 && placeTemplateImage.value.length > 0;
   setSubmitButtonState(isValid);
 });
