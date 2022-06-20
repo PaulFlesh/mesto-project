@@ -97,6 +97,31 @@ function addPlace (evt) {
   };
   const newCard = createCard(data);
   elementsList.prepend(newCard);
+  setSubmitButtonState (false);
   closePlacePopup();
 }
 formImage.addEventListener('submit', addPlace);
+
+// валидация кнопок
+function setSubmitButtonState (isFormValid) {
+  if (isFormValid) {
+    addPlaceButton.removeAttribute('disabled');
+    addPlaceButton.classList.remove('form__submit-button_disabled');
+  } else {
+    addPlaceButton.setAttribute('disabled', true);
+    addPlaceButton.classList.add('form__submit-button_disabled');
+  }
+}
+
+form.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  addSong(artist.value, title.value);
+  placeTemplateName.value = '';
+  placeTemplateImage.value = '';
+  setSubmitButtonState (false);
+});
+
+form.addEventListener('input', function (evt) {
+  const isValid = placeTemplateName.value.length > 0 && placeTemplateImage.value.length > 0;
+  setSubmitButtonState(isValid);
+});
