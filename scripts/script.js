@@ -119,3 +119,37 @@ function validate (evt) {
 
 formImage.addEventListener('submit', addPlace);
 formImage.addEventListener('input', validate);
+
+
+
+const formEl = document.querySelector('.form');
+const formItem = formEl.querySelector('.form__item');
+const formError = formEl.querySelector(`.${formItem.id}-error`);
+
+const showError = (input, errorMessage) => {
+  input.classList.add('form__item_type_error');
+  formError.textContent = errorMessage;
+  formError.classList.add('form__item-error_active');
+};
+
+const hideError = (input) => {
+  input.classList.remove('form__item_type_error');
+  formError.classList.remove('form__item-error_active');
+  formError.textContent = '';
+};
+
+const checkInputValidity = () => {
+  if (!formItem.validity.valid) {
+    showError(formItem, formItem.validationMessage);
+  } else {
+    hideError(formItem);
+  }
+}
+
+formEl.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+});
+
+formItem.addEventListener('input', function () {
+  checkInputValidity();
+});
