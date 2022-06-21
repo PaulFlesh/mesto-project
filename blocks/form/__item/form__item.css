@@ -17,3 +17,7 @@
 .form__item:focus-visible {
   outline: none;
 }
+
+.form__item:invalid {
+  border-bottom: 1px solid red;
+}
