@@ -111,14 +111,7 @@ function addPlace (evt) {
   setSubmitButtonState (false);
   closePlacePopup();
 }
-
-function validate (evt) {
-  const isValid = placeTemplateName.value.length > 0 && placeTemplateImage.value.length > 0;
-  setSubmitButtonState (isValid);
-}
-
 formImage.addEventListener('submit', addPlace);
-formImage.addEventListener('input', validate);
 
 
 const showInputError = (formElement, inputElement, errorMessage) => {
@@ -151,15 +144,15 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('button_inactive');
+    buttonElement.classList.add('form__submit-button_disabled');
   } else {
-    buttonElement.classList.remove('button_inactive');
+    buttonElement.classList.remove('form__submit-button_disabled');
   }
 }; 
 
 const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-  const buttonElement = formElement.querySelector('.form__submit');
+  const inputList = Array.from(formElement.querySelectorAll('.form__item'));
+  const buttonElement = formElement.querySelector('.form__submit-button');
   toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
@@ -175,13 +168,12 @@ const enableValidation = () => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
-    const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
+    const fieldsetList = Array.from(formElement.querySelectorAll('.form__input-container'));
 
     fieldsetList.forEach((fieldSet) => {
       setEventListeners(fieldSet);
     });
   });
 };
-
 enableValidation();
-
+console.log(formImage.validity.valid);
