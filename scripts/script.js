@@ -121,37 +121,45 @@ formImage.addEventListener('submit', addPlace);
 formImage.addEventListener('input', validate);
 
 
-
-//const formElement = document.querySelector('.form');
-const formInput = formImage.querySelector('.form__item');
-const formError = formImage.querySelector(`.${formInput.id}-error`);
-
-const showError = (input, errorMessage) => {
-  input.classList.add('form__input_type_error');
-  formError.textContent = errorMessage;
-  formError.classList.add('form__input-error_active');
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add('form__item_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('form__item-error_active');
 };
 
-const hideError = (input) => {
-  input.classList.remove('form__input_type_error');
-  formError.classList.remove('form__input-error_active');
-  formError.textContent = '';
-  // 1. Удалите активный класс ошибки c formError.
-  // 2. Очистите свойство textContent элемента formError.
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('form__item_type_error');
+  errorElement.classList.remove('form__item-error_active');
+  errorElement.textContent = '';
 };
 
-const checkInputValidity = () => {
-  if (!formInput.validity.valid) {
-    showError(formInput, formInput.validationMessage);
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideError(formInput);
+    hideInputError(formElement, inputElement);
   }
+};
+
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.form__item'));
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      checkInputValidity(formElement, inputElement);
+    });
+  });
+};
+
+function enableValidation () {
+  let formList = Array.from(document.querySelectorAll('.form'));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+    });
+    setEventListeners(formElement);
+  });
 }
+enableValidation();
 
-formImage.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-});
-
-formInput.addEventListener('input', function () {
-  checkInputValidity();
-});
