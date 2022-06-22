@@ -1,5 +1,5 @@
 // Объявление констант профиля и формы добавления нового места
-const formElement = document.querySelector('[name="profile-info"]');
+const formProfile = document.querySelector('[name="profile-info"]');
 const nameInput = document.querySelector('[name="profile-title"]');
 const jobInput = document.querySelector('[name="profile-subtitle"]');
 const profileName = document.querySelector('.profile__title');
@@ -36,7 +36,7 @@ function submitProfileForm (evt) {
   profession.textContent = jobInput.value;
   closeProfilePopup();
 }
-formElement.addEventListener('submit', submitProfileForm); 
+formProfile.addEventListener('submit', submitProfileForm); 
 
 // Объявление констант окна картинок
 const popupImage = document.querySelector('.popup_image');
@@ -122,34 +122,36 @@ formImage.addEventListener('input', validate);
 
 
 
-const formEl = document.querySelector('.form');
-const formItem = formEl.querySelector('.form__item');
-const formError = formEl.querySelector(`.${formItem.id}-error`);
+const formElement = document.querySelector('.form');
+const formInput = formElement.querySelector('.form__item');
+const formError = formElement.querySelector(`.${formInput.id}-error`);
 
 const showError = (input, errorMessage) => {
-  input.classList.add('form__item_type_error');
+  input.classList.add('form__input_type_error');
   formError.textContent = errorMessage;
-  formError.classList.add('form__item-error_active');
+  formError.classList.add('form__input-error_active');
 };
 
 const hideError = (input) => {
-  input.classList.remove('form__item_type_error');
-  formError.classList.remove('form__item-error_active');
+  input.classList.remove('form__input_type_error');
+  formError.classList.remove('form__input-error_active');
   formError.textContent = '';
+  // 1. Удалите активный класс ошибки c formError.
+  // 2. Очистите свойство textContent элемента formError.
 };
 
 const checkInputValidity = () => {
-  if (!formItem.validity.valid) {
-    showError(formItem, formItem.validationMessage);
+  if (!formInput.validity.valid) {
+    showError(formInput, formInput.validationMessage);
   } else {
-    hideError(formItem);
+    hideError(formInput);
   }
 }
 
-formEl.addEventListener('submit', function (evt) {
+formElement.addEventListener('submit', function (evt) {
   evt.preventDefault();
 });
 
-formItem.addEventListener('input', function () {
+formInput.addEventListener('input', function () {
   checkInputValidity();
 });
