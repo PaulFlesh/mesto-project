@@ -122,9 +122,9 @@ formImage.addEventListener('input', validate);
 
 
 
-const formElement = document.querySelector('.form');
-const formInput = formElement.querySelector('.form__item');
-const formError = formElement.querySelector(`.${formInput.id}-error`);
+//const formElement = document.querySelector('.form');
+const formInput = formImage.querySelector('.form__item');
+const formError = formImage.querySelector(`.${formInput.id}-error`);
 
 const showError = (input, errorMessage) => {
   input.classList.add('form__input_type_error');
@@ -148,7 +148,7 @@ const checkInputValidity = () => {
   }
 }
 
-formElement.addEventListener('submit', function (evt) {
+formImage.addEventListener('submit', function (evt) {
   evt.preventDefault();
 });
 
