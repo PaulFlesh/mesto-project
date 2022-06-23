@@ -176,7 +176,6 @@ const enableValidation = () => {
   });
 };
 enableValidation();
-console.log(formImage.validity.valid);
 
 function escapeFromModal (evt) {
   if (evt.key === "Esc") { closePopup }
