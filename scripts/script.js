@@ -111,7 +111,7 @@ function addPlace (evt) {
   setSubmitButtonState (false);
   closePlacePopup();
 }
-//formImage.addEventListener('submit', addPlace);
+formImage.addEventListener('submit', addPlace);
 
 
 const showInputError = (formElement, inputElement, errorMessage) => {
@@ -176,4 +176,4 @@ const enableValidation = () => {
   });
 };
 enableValidation();
-console.log(formImage.validity/*.valid*/);
+console.log(formImage.validity.valid);
