@@ -13,15 +13,19 @@ const placePopup = document.querySelector('.popup_place');
 // Создание функций открытия/закрытия модальных окон профиля и нового места
 const popupList = document.querySelectorAll('.popup');
 
+
+
 const escapeFromModal = (evt) => {
   if (evt.key == 'Escape') {
-    placePopup.classList.remove('popup_opened');
+    for (let el of popupList) {
+      el.classList.remove('popup_opened');
+    }
   }
 };
 
 const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
-    placePopup.classList.remove('popup_opened');
+    evt.classList.remove('popup_opened');
   }
 };
 
