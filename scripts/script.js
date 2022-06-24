@@ -15,13 +15,13 @@ const popupList = document.querySelectorAll('.popup');
 
 const escapeFromModal = (evt) => {
   if (evt.key == 'Escape') {
-    popupList.classList.remove('popup_opened');
+    placePopup.classList.remove('popup_opened');
   }
 };
 
 const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
-    popupList.classList.remove('popup_opened');
+    placePopup.classList.remove('popup_opened');
   }
 };
 
