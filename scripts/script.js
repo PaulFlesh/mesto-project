@@ -11,8 +11,36 @@ const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
 // Создание функций открытия/закрытия модальных окон профиля и нового места
-const openPopup = (popup) => popup.classList.add('popup_opened');
-const closePopup = (popup) => popup.classList.remove('popup_opened');
+const escapeFromModal = (evt) => {
+  if (evt.key == 'Escape') {
+    popup.classList.remove('popup_opened');
+  };
+};
+const closeByOverlay = (evt) => {
+  if (evt.target.classList.contains('popup_opened')) {
+    popup.classList.remove('popup_opened');
+  };
+};
+
+
+const openPopup = (popup) => {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', escapeFromModal);
+  document.addEventListener('mousedown', closeByOverlay);
+};
+const closePopup = (popup) => {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', (evt) => {
+    if (evt.key == 'Escape') {
+      popup.classList.remove('popup_opened');
+    };
+  });
+  document.removeEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      popup.classList.remove('popup_opened');
+    };
+  });
+};
 
 const openProfilePopup = () => openPopup(profilePopup);
 const closeProfilePopup = () => closePopup(profilePopup);
@@ -35,7 +63,7 @@ function submitProfileForm (evt) {
   profileName.textContent = nameInput.value;
   profession.textContent = jobInput.value;
   closeProfilePopup();
-}
+};
 formProfile.addEventListener('submit', submitProfileForm); 
 
 // Объявление констант окна картинок
@@ -49,7 +77,7 @@ const openImage = (data) => {
   popupPicCaption.textContent = data.name;
   openPopup(popupImage);
   return data;
-}
+};
 
 const closeImage = () => closePopup(popupImage);
 
@@ -73,12 +101,12 @@ const createCard = (data) => {
   const toggleLike = () => placeLike.classList.toggle('element__like_active');
   placeLike.addEventListener('click', () => toggleLike());
   return placeElement;
-}
+};
 
 const renderCard = (data, container) => {
   const place = createCard(data);
   container.append(place);
-}
+};
 
 initialCards.forEach(function(item) {
   renderCard(item, elementsList);
@@ -97,7 +125,7 @@ function setSubmitButtonState (isFormValid) {
     addPlaceButton.setAttribute('disabled', true);
     addPlaceButton.classList.add('form__submit-button_disabled');
   }
-}
+};
 
 // Функция создания карточки из модального окна
 function addPlace (evt) {
@@ -110,7 +138,7 @@ function addPlace (evt) {
   elementsList.prepend(newCard);
   setSubmitButtonState (false);
   closePlacePopup();
-}
+};
 formImage.addEventListener('submit', addPlace);
 
 
@@ -133,13 +161,13 @@ const checkInputValidity = (formElement, inputElement) => {
     showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
     hideInputError(formElement, inputElement);
-  }
+  };
 };
 
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
-  })
+  });
 }; 
 
 const toggleButtonState = (inputList, buttonElement) => {
@@ -147,7 +175,7 @@ const toggleButtonState = (inputList, buttonElement) => {
     buttonElement.classList.add('form__submit-button_disabled');
   } else {
     buttonElement.classList.remove('form__submit-button_disabled');
-  }
+  };
 }; 
 
 const setEventListeners = (formElement) => {
@@ -186,7 +214,7 @@ if (formImage.classList.contains('popup_opened')) {
   escapeFromModal();
 }
 */
-
+/*
 const popupList = document.querySelectorAll('.popup');
 
 document.addEventListener('keydown', (evt) => {
@@ -204,3 +232,4 @@ document.addEventListener('mousedown', (evt) => {
     }
   }
 });
+*/
