@@ -176,4 +176,3 @@ const enableValidation = () => {
   });
 };
 enableValidation();
-console.log(formImage.validity.valid);
