@@ -11,12 +11,12 @@ const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
 // Создание функций открытия/закрытия модальных окон профиля и нового места
-const escapeFromModal = (evt) => {
+const escapeFromModal = (evt, popup) => {
   if (evt.key == 'Escape') {
     popup.classList.remove('popup_opened');
   };
 };
-const closeByOverlay = (evt) => {
+const closeByOverlay = (evt, popup) => {
   if (evt.target.classList.contains('popup_opened')) {
     popup.classList.remove('popup_opened');
   };
