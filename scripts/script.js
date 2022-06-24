@@ -11,6 +11,7 @@ const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
 // Создание функций открытия/закрытия модальных окон профиля и нового места
+/*
 function perebor () {
   const mass = document.querySelectorAll('.popup');
   for (let el of mass) {
@@ -29,17 +30,17 @@ const closeByOverlay = (evt) => {
     perebor();
   }
 };
-
+*/
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', escapeFromModal);
-  document.addEventListener('mousedown', closeByOverlay);
+  //document.addEventListener('keydown', escapeFromModal);
+  //document.addEventListener('mousedown', closeByOverlay);
 };
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', escapeFromModal);
-  document.removeEventListener('mousedown', closeByOverlay);
+  //document.removeEventListener('keydown', escapeFromModal);
+  //document.removeEventListener('mousedown', closeByOverlay);
 };
 
 const openProfilePopup = () => openPopup(profilePopup);
