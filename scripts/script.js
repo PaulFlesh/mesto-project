@@ -176,7 +176,7 @@ const enableValidation = () => {
   });
 };
 enableValidation();
-
+/*
 function escapeFromModal (evt) {
   if (evt.key === "Esc") { closePopup }
 }
@@ -184,4 +184,22 @@ function escapeFromModal (evt) {
 if (formImage.classList.contains('popup_opened')) {
   !formImage.addEventListener('click', closeImage);
   escapeFromModal();
-}
+}*/
+
+const popupList = document.querySelectorAll('.popup');
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.key == 'Escape') {
+    for (let i = 0; i = popupList.length; i++) {
+      popupList.classList.remove('popup_opened');
+    }
+  }
+});
+
+document.addEventListener('mousedown', (evt) => {
+  if (evt.target.classList.contains(popup_opened)) {
+    for (let i = 0; i = popupList.length; i++) {
+      popupList.classList.remove('popup_opened');
+    }
+  }
+});
