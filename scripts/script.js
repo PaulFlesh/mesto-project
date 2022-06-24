@@ -11,14 +11,14 @@ const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
 // Создание функций открытия/закрытия модальных окон профиля и нового места
-const escapeFromModal = (evt, popup) => {
+const escapeFromModal = (evt) => {
   if (evt.key == 'Escape') {
-    popup.classList.remove('popup_opened');
+    placePopup.classList.remove('popup_opened');
   };
 };
-const closeByOverlay = (evt, popup) => {
+const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
-    popup.classList.remove('popup_opened');
+    placePopup.classList.remove('popup_opened');
   };
 };
 
