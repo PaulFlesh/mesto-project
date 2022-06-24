@@ -11,16 +11,22 @@ const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
 // Создание функций открытия/закрытия модальных окон профиля и нового места
-const mass = document.querySelectorAll('.popup');
+function perebor () {
+  const mass = document.querySelectorAll('.popup');
+  for (let el of mass) {
+    el.classList.remove('popup_opened');
+  }
+};
+
 
 const escapeFromModal = (evt) => {
   if (evt.key == 'Escape') {
-    mass.classList.remove('popup_opened');
+    perebor();
   }
 };
 const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
-    mass.classList.remove('popup_opened');
+    perebor();
   }
 };
 
