@@ -30,7 +30,11 @@ const openPopup = (popup) => {
   popup.addEventListener('keydown', escapeFromModal);
   popup.addEventListener('mousedown', closeByOverlay);
 }
-const closePopup = (popup) => popup.classList.remove('popup_opened');
+const closePopup = (popup) => {
+  popup.classList.remove('popup_opened');
+  popup.removeEventListener('keydown', escapeFromModal);
+  popup.removeEventListener('mousedown', closeByOverlay);
+}
 
 const openProfilePopup = () => openPopup(profilePopup);
 const closeProfilePopup = () => closePopup(profilePopup);
