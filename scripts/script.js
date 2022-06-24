@@ -17,17 +17,21 @@ const popupList = document.querySelectorAll('.popup');
 
 const escapeFromModal = (evt) => {
   if (evt.key == 'Escape') {
+    /*
     for (let el of popupList) {
       el.classList.remove('popup_opened');
     }
+    */
+    placePopup.classList.remove('popup_opened');
   }
 };
-
+/*
 const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
-    evt.classList.remove('popup_opened');
+    placePopup.classList.remove('popup_opened');
   }
 };
+*/
 
 const openPopup = (popup) => popup.classList.add('popup_opened');
 const closePopup = (popup) => popup.classList.remove('popup_opened');
