@@ -4,7 +4,7 @@ const nameInput = document.querySelector('[name="profile-title"]');
 const jobInput = document.querySelector('[name="profile-subtitle"]');
 const profileName = document.querySelector('.profile__title');
 const profession = document.querySelector('.profile__subtitle');
-const formImage = document.querySelector('[name="element-creation"]');
+
 
 // Объявление модальных окон 
 const profilePopup = document.querySelector('.popup_profile');
@@ -91,6 +91,3 @@ function setSubmitButtonState (isFormValid) {
     addPlaceButton.classList.add('form__submit-button_disabled');
   }
 }
-
-
-formImage.addEventListener('submit', addPlace);
