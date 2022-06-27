@@ -1,4 +1,4 @@
-import { initialCards } from "./data";
+import { initialCards } from "./data.js";
 
 export const elementsList = document.querySelector('.elements__list');
 export const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');

@@ -1,1 +1,1 @@
-import * as all from "./data";
+import * as all from "./data.js";
