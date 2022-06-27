@@ -13,7 +13,7 @@ const placePopup = document.querySelector('.popup_place');
 // Создание функций открытия/закрытия модальных окон профиля и нового места
 const popupOpened = document.querySelectorAll('.popup_opened');
 
-function escapeFromModal (evt) {
+const escapeFromModal = (evt) => {
   if (evt.key === 'Escape') {
     popupOpened.classList.remove('popup_opened');
     console.log(evt.key);
@@ -36,12 +36,12 @@ const closeByOverlay = (evt) => {
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', () => escapeFromModal(evt));
+  document.addEventListener('keydown', escapeFromModal);
   popup.addEventListener('mousedown', closeByOverlay);
 }
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', () => escapeFromModal(evt));
+  document.removeEventListener('keydown', escapeFromModal);
   popup.removeEventListener('mousedown', closeByOverlay);
 }
 
