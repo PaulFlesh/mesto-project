@@ -18,6 +18,7 @@ const escapeFromModal = (evt) => {
     Array.from(popupList).forEach(popup => {
       popup.classList.remove('popup_opened');
     });
+    console.log(evt.key);
   }
 };
 /*
