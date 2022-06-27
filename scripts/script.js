@@ -150,11 +150,19 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.textContent = '';
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+const inputsProfile = Array.from(formProfile.querySelectorAll('.form__item'));
+inputsProfile.forEach((inputProfile => { checkInputValidity(formProfile, inputProfile, validationConfig)}));
+
+function disableButton(buttonElement, config) {
+  buttonElement.classList.add(config.inactiveButtonClass);
+  buttonElement.disabled = 'true';
+}
+
+const checkInputValidity = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, config);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, config);
   }
 };
 
