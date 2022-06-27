@@ -28,3 +28,16 @@ const renderCard = (data, container) => {
 initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
+
+// Функция создания карточки из модального окна
+function addPlace (evt) {
+  evt.preventDefault();
+  const data = {
+    name: placeTemplateName.value,
+    link: placeTemplateImage.value    
+  };
+  const newCard = createCard(data);
+  elementsList.prepend(newCard);
+  setSubmitButtonState (false);
+  closePlacePopup();
+}
