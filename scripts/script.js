@@ -76,7 +76,7 @@ const openImage = (data) => {
 const closeImage = () => closePopup(popupImage);
 
 document.querySelector('.image-close-btn').addEventListener('click', closeImage);
-
+/*
 const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
@@ -105,7 +105,7 @@ const renderCard = (data, container) => {
 initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
-
+*/
 const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
