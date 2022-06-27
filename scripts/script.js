@@ -15,13 +15,23 @@ const popupList = document.querySelectorAll('.popup');
 
 const escapeFromModal = (evt) => {
   if (evt.key == 'Escape') {
-    placePopup.classList.remove('popup_opened');
+    popupList.forEach(function(popup) {
+      popup.classList.remove('popup_opened');
+    });
   }
 };
-
+/*
+Array.from(inputsList).forEach(inputElement => {
+  inputElement.addEventListener('input', () => {
+      const isFormValid = formElement.checkValidity();
+      checkInputValidity(formElement, inputElement, inputErrorClass)
+      toggleButtonState(submitButton, isFormValid, inactiveButtonClass)
+  })
+})
+*/
 const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
-    placePopup.classList.remove('popup_opened');
+    evt.target.classList.remove('popup_opened');
   }
 };
 

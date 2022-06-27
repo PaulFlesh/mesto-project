@@ -21,11 +21,13 @@ const createCard = (data) => {
   return placeElement;
 }
 
+// Кладем карточку в начало списка
 const renderCard = (data, container) => {
   const place = createCard(data);
   container.append(place);
 }
 
+// Раскладываем карточки из исходного массива
 initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
