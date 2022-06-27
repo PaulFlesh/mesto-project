@@ -16,6 +16,7 @@ const popupOpened = document.querySelectorAll('.popup_opened');
 function escapeFromModal (evt) {
   if (evt.key === 'Escape') {
     popupOpened.classList.remove('popup_opened');
+    console.log(evt.key);
   }
 };
 /*
