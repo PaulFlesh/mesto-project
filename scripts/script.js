@@ -11,11 +11,11 @@ const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
 // Создание функций открытия/закрытия модальных окон профиля и нового места
-const popupList = document.querySelectorAll('.popup');
+const popupOpened = document.querySelectorAll('.popup_opened');
 
 function escapeFromModal (evt) {
   if (evt.key === 'Escape') {
-    document.querySelector('popup_opened');
+    popupOpened.classList.remove('popup_opened');
   }
 };
 /*
