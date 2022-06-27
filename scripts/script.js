@@ -76,36 +76,7 @@ const openImage = (data) => {
 const closeImage = () => closePopup(popupImage);
 
 document.querySelector('.image-close-btn').addEventListener('click', closeImage);
-/*
-const elementsList = document.querySelector('.elements__list');
-const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
-const createCard = (data) => {
-  const placeElement = placeTemplate.cloneNode(true);
-  const placeName = placeElement.querySelector('.element__name');
-  const placeImage = placeElement.querySelector('.element__image');
-  const placeBin = placeElement.querySelector('.element__bin');
-  const placeLike = placeElement.querySelector('.element__like');
-  placeName.textContent = data.name;
-  placeImage.src = data.link;
-  placeImage.alt = data.name;
-  placeImage.addEventListener('click', () => openImage(data));
-  const removePlace = () => placeElement.remove();
-  placeBin.addEventListener('click', () => removePlace());
-  const toggleLike = () => placeLike.classList.toggle('element__like_active');
-  placeLike.addEventListener('click', () => toggleLike());
-  return placeElement;
-}
-
-const renderCard = (data, container) => {
-  const place = createCard(data);
-  container.append(place);
-}
-
-initialCards.forEach(function(item) {
-  renderCard(item, elementsList);
-});
-*/
 const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
@@ -138,12 +109,12 @@ formImage.addEventListener('submit', addPlace);
 
 const showError = (errorElement, inputElement, inputErrorClass) => {
   errorElement.textContent = inputElement.validationMessage;
-  inputElement.classList.add(inputErrorClass)
+  inputElement.classList.add(inputErrorClass);
 }
 
 const hideError = (errorElement, inputElement, inputErrorClass) => {
   errorElement.textContent = inputElement.validationMessage;
-  inputElement.classList.remove(inputErrorClass)
+  inputElement.classList.remove(inputErrorClass);
 }
 
 const checkInputValidity = (formElement, inputElement, config) => {
@@ -171,26 +142,22 @@ const setEventListers = (formElement, {inputSelector, submitButtonSelector, inac
   const inputsList = formElement.querySelectorAll(inputSelector);
   const submitButton = formElement.querySelector(submitButtonSelector);
 
-
   Array.from(inputsList).forEach(inputElement => {
-      inputElement.addEventListener('input', () => {
-          const isFormValid = formElement.checkValidity();
-          checkInputValidity(formElement, inputElement, inputErrorClass)
-          toggleButtonState(submitButton, isFormValid, inactiveButtonClass)
-      })
-  }) 
-
+    inputElement.addEventListener('input', () => {
+      const isFormValid = formElement.checkValidity();
+      checkInputValidity(formElement, inputElement, inputErrorClass);
+      toggleButtonState(submitButton, isFormValid, inactiveButtonClass);
+      });
+  }); 
   formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      console.log('отправка формы');
-  })
-
+    evt.preventDefault();
+  });
 }
 
 const enableValidation = ({formSelector, ...rest}) => {
   const forms = document.querySelectorAll(formSelector);
   Array.from(forms).forEach(formElement => {
-      setEventListers(formElement, rest) 
+    setEventListers(formElement, rest) 
   })
 }
 
@@ -202,9 +169,6 @@ const validationConfig = {
   inputErrorClass: 'form__item_type_error',
 }
 
-
 const {inputSelector, ...rest} = validationConfig;
-console.log(rest);
-
 
 enableValidation(validationConfig);
