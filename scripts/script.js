@@ -178,7 +178,7 @@ const checkInputValidity = (formElement, inputElement, config) => {
 */
 const checkInputValidity = (formElement, inputElement, config) => {
   const isInputNotValid = !inputElement.validity.valid;
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
 
   if(isInputNotValid) {
       showError(errorElement, inputElement, config);

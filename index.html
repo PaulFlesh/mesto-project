@@ -37,11 +37,11 @@
           <fieldset class="form__input-container">
             <label class="form__field">
               <input type="text" class="form__item form__item_field_title" id="profile-title" name="profile-title" value="Жак-Ив Кусто" placeholder="Имя" minlength="2" maxlength="40" required>
-              <span class="form__item-error profile-title-error"></span>
+              <span id="profile-title-error" class="form__item-error"></span>
             </label>
             <label class="form__field">
               <input type="text" class="form__item form__item_field_subtitle" id="profile-subtitle" name="profile-subtitle" value="Исследователь океана" placeholder="О себе" minlength="2" maxlength="200" required>
-              <span class="form__item-error profile-subtitle-error"></span>
+              <span id="profile-subtitle-error" class="form__item-error"></span>
             </label>
             <button type="submit" class="form__submit-button form__submit-button_edit-profile" disabled="true">Сохранить</button>
           </fieldset>
@@ -56,11 +56,11 @@
           <fieldset class="form__input-container">
             <label class="form__field">
               <input type="text" class="form__item form__item_field_title" id="element-title" name="element-title" placeholder="Название" minlength="2" maxlength="30" required>
-              <span class="form__item-error element-title-error"></span>
+              <span id="element-title-error" class="form__item-error"></span>
             </label>
             <label class="form__field">
               <input type="url" class="form__item form__item_field_subtitle" id="element-image" name="element-image" placeholder="Ссылка на картинку" required>
-              <span class="form__item-error element-image-error"></span>
+              <span id="element-image-error" class="form__item-error"></span>
             </label>
             <button type="submit" class="form__submit-button form__submit-button_create-element" disabled="true">Создать</button>
           </fieldset>
