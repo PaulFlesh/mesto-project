@@ -1,9 +1,9 @@
 import { initialCards } from "./data.js";
 
-export const elementsList = document.querySelector('.elements__list');
-export const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
+const elementsList = document.querySelector('.elements__list');
+const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
-export const createCard = (data) => {
+const createCard = (data) => {
   const placeElement = placeTemplate.cloneNode(true);
   const placeName = placeElement.querySelector('.element__name');
   const placeImage = placeElement.querySelector('.element__image');
@@ -20,7 +20,7 @@ export const createCard = (data) => {
   return placeElement;
 }
 
-export const renderCard = (data, container) => {
+const renderCard = (data, container) => {
   const place = createCard(data);
   container.append(place);
 }
