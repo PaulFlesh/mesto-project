@@ -40,6 +40,7 @@ function addPlace (evt) {
   const newCard = createCard(data);
   elementsList.prepend(newCard);
   setSubmitButtonState (false);
+  formImage.reset();
   closePlacePopup();
 }
 formImage.addEventListener('submit', addPlace);

@@ -40,11 +40,8 @@ const openProfilePopup = () => openPopup(profilePopup);
 const closeProfilePopup = () => closePopup(profilePopup);
 
 const openPlacePopup = () => openPopup(placePopup);
-/*const closePlacePopup = () => {
-  closePopup(placePopup);
-  formImage.reset();
-};
-*/
+const closePlacePopup = () => closePopup(placePopup);
+
 document.querySelector('.profile__edit-button').addEventListener('click', openProfilePopup);
 document.querySelector('.profile-close-btn').addEventListener('click', closeProfilePopup);
 
