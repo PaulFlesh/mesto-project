@@ -25,8 +25,6 @@ export const renderCard = (data, container) => {
   container.append(place);
 }
 
-export function initiate() {
-  initialCards.forEach(function(item) {
-    renderCard(item, elementsList);
-  });
-}
+initialCards.forEach(function(item) {
+  renderCard(item, elementsList);
+});
