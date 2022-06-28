@@ -3,6 +3,9 @@ import { initialCards } from "./data.js";
 const formPlace = document.querySelector('[name="element-creation"]');
 const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
+const placeTemplateName = document.querySelector('#element-title');
+const placeTemplateImage = document.querySelector('#element-image');
+const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 
 const createCard = (data) => {
   const placeElement = placeTemplate.cloneNode(true);
