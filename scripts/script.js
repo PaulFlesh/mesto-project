@@ -11,14 +11,27 @@ const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
 // Создание функций открытия/закрытия модальных окон профиля и нового места
+const popupList = document.querySelectorAll('.popup');
+const popupOpened = document.querySelector('.popup_opened');
 
+const escapeFromModal = (evt) => {
+  for (let i = 0; i < popupList.length; i++) {
+    if (i.classList.contains('popup_opened')) {
+      if (evt.key === 'Escape') {
+        closePopup(popupOpened);
+      }
+    }
+  }
+}
+/*
 const escapeFromModal = (evt) => {
   const popupOpened = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
     closePopup(popupOpened);
   }
 }
-document.addEventListener('keyup', escapeFromModal); // keyup не выдает ошибок, если клавиша долго нажата
+*/
+document.addEventListener('keydown', escapeFromModal);
 
 const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
