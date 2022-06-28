@@ -27,7 +27,7 @@ const openPopup = (popup) => {
     if (evt.key === 'Escape') {
       closePopup(popupOpened);
     }
-  }*/escapeFromModal());
+  }*/escapeFromModal(evt));
   popup.addEventListener('mousedown', closeByOverlay);
 }
 const closePopup = (popup) => {
@@ -37,7 +37,7 @@ const closePopup = (popup) => {
     if (evt.key === 'Escape') {
       closePopup(popupOpened);
     }
-  }*/escapeFromModal());
+  }*/escapeFromModal(evt));
   popup.removeEventListener('mousedown', closeByOverlay);
 }
 
