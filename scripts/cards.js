@@ -1,5 +1,6 @@
 import { initialCards } from "./data.js";
 import { openImage } from "./modal.js";
+import { toggleButtonState } from "./validation.js";
 
 const formPlace = document.querySelector('[name="element-creation"]');
 const elementsList = document.querySelector('.elements__list');
@@ -45,7 +46,7 @@ function addPlace (evt) {
   };
   const newCard = createCard(data);
   elementsList.prepend(newCard);
-  setSubmitButtonState (false);
+  toggleButtonState (false); ////
   formPlace.reset();
   closePlacePopup();
 }
