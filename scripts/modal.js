@@ -30,7 +30,7 @@ const closePopup = (popup) => {
 
 
 const openProfilePopup = () => openPopup(profilePopup);
-const closeProfilePopup = () => closePopup(profilePopup);
+export const closeProfilePopup = () => closePopup(profilePopup);
 
 const openPlacePopup = () => openPopup(placePopup);
 const closePlacePopup = () => closePopup(placePopup);
