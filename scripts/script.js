@@ -16,7 +16,7 @@ const popupOpened = document.querySelector('.popup_opened');
 
 const escapeFromModal = (evt) => {
   for (let i = 0; i < popupList.length; i++) {
-    if (i.classList.contains('popup_opened')) {
+    if (popupList[i].classList.contains('popup_opened')) {
       if (evt.key === 'Escape') {
         closePopup(popupOpened);
       }
