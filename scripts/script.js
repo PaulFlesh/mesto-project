@@ -12,14 +12,8 @@ const placePopup = document.querySelector('.popup_place');
 
 // Создание функций открытия/закрытия модальных окон профиля и нового места
 
-/*
-function escapeFromModal (evt) {
-  const popupOpened = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
-    closePopup(popupOpened);
-  }
-};
-*/
+
+
 const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
     evt.target.classList.remove('popup_opened');
@@ -28,24 +22,32 @@ const closeByOverlay = (evt) => {
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', function(evt) {
+  document.addEventListener('keydown', /*function(evt) {
     const popupOpened = document.querySelector('.popup_opened');
     if (evt.key === 'Escape') {
       closePopup(popupOpened);
     }
-  });
+  }*/escapeFromModal());
   popup.addEventListener('mousedown', closeByOverlay);
 }
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', function(evt) {
+  document.removeEventListener('keydown', /*function(evt) {
     const popupOpened = document.querySelector('.popup_opened');
     if (evt.key === 'Escape') {
       closePopup(popupOpened);
     }
-  });
+  }*/escapeFromModal());
   popup.removeEventListener('mousedown', closeByOverlay);
 }
+
+function escapeFromModal (evt) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    closePopup(popupOpened);
+  }
+};
+
 
 const openProfilePopup = () => openPopup(profilePopup);
 const closeProfilePopup = () => closePopup(profilePopup);
