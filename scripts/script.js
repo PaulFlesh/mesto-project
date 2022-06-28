@@ -22,22 +22,22 @@ const closeByOverlay = (evt) => {
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', /*function(evt) {
+  document.addEventListener('keydown', function(evt) {
     const popupOpened = document.querySelector('.popup_opened');
     if (evt.key === 'Escape') {
       closePopup(popupOpened);
     }
-  }*/() => escapeFromModal(evt));
+  });
   popup.addEventListener('mousedown', closeByOverlay);
 }
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', /*function(evt) {
+  document.removeEventListener('keydown', function(evt) {
     const popupOpened = document.querySelector('.popup_opened');
     if (evt.key === 'Escape') {
       closePopup(popupOpened);
     }
-  }*/() => escapeFromModal(evt));
+  });
   popup.removeEventListener('mousedown', closeByOverlay);
 }
 
