@@ -46,7 +46,7 @@ function addPlace (evt) {
   };
   const newCard = createCard(data);
   elementsList.prepend(newCard);
-  toggleButtonState (false); ////
+  toggleButtonState (); ////
   formPlace.reset();
   closePlacePopup();
 }
