@@ -22,23 +22,33 @@ const closeByOverlay = (evt) => {
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', escapeFromModal(evt));
+  //document.addEventListener('keyup', escapeFromModal(evt));
   popup.addEventListener('mousedown', closeByOverlay);
 }
 const closePopup = (popup) => {
   
-  document.removeEventListener('keydown', escapeFromModal(evt));
+  //document.removeEventListener('keyup', escapeFromModal(evt));
   popup.removeEventListener('mousedown', closeByOverlay);
   popup.classList.remove('popup_opened');
 }
+function escapeFromModal(evt) {
+  const popupList = document.querySelectorAll('.popup');
+  popupList.forEach(function(evt) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    closePopup(popupOpened);
+  }});
+}
 
+document.addEventListener('keyup', escapeFromModal(evt));
+/*
 const escapeFromModal = (evt) => {
   const popupOpened = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
     closePopup(popupOpened);
   }
 };
-
+*/
 
 const openProfilePopup = () => openPopup(profilePopup);
 const closeProfilePopup = () => closePopup(profilePopup);
