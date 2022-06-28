@@ -11,24 +11,15 @@ const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
 // Создание функций открытия/закрытия модальных окон профиля и нового места
-const popupOpened = document.querySelector('.popup_opened');
 
-const escapeFromModal = (evt) => {
+
+function escapeFromModal (evt) {
+  const popupOpened = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
     closePopup(popupOpened);
-    //popupOpened.classList.remove('popup_opened');
-    console.log(evt.key);
   }
 };
-/*
-Array.from(inputsList).forEach(inputElement => {
-  inputElement.addEventListener('input', () => {
-      const isFormValid = formElement.checkValidity();
-      checkInputValidity(formElement, inputElement, inputErrorClass)
-      toggleButtonState(submitButton, isFormValid, inactiveButtonClass)
-  })
-})
-*/
+
 const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
     evt.target.classList.remove('popup_opened');
@@ -37,12 +28,12 @@ const closeByOverlay = (evt) => {
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', escapeFromModal);
+  document.addEventListener('keydown', escapeFromModal(evt));
   popup.addEventListener('mousedown', closeByOverlay);
 }
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', escapeFromModal);
+  document.removeEventListener('keydown', escapeFromModal(evt));
   popup.removeEventListener('mousedown', closeByOverlay);
 }
 
