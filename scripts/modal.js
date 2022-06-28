@@ -33,7 +33,7 @@ const openProfilePopup = () => openPopup(profilePopup);
 export const closeProfilePopup = () => closePopup(profilePopup);
 
 const openPlacePopup = () => openPopup(placePopup);
-const closePlacePopup = () => closePopup(placePopup);
+export const closePlacePopup = () => closePopup(placePopup);
 
 document.querySelector('.profile__edit-button').addEventListener('click', openProfilePopup);
 document.querySelector('.profile-close-btn').addEventListener('click', closeProfilePopup);
