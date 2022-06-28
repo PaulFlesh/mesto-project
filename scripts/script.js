@@ -11,12 +11,11 @@ const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
 
 // Создание функций открытия/закрытия модальных окон профиля и нового места
-const popupOpened = document.querySelectorAll('.popup_opened');
+const popupOpened = document.querySelector('.popup_opened');
 
 const escapeFromModal = (evt) => {
   if (evt.key === 'Escape') {
-    document.querySelectorAll('.popup_opened').classList.remove('popup_opened');
-    //popupOpened.classList.remove('popup_opened');
+    popupOpened.classList.remove('popup_opened');
     console.log(evt.key);
   }
 };
@@ -89,6 +88,7 @@ const placeTemplateImage = document.querySelector('#element-image');
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 
 // Валидация кнопки нового места
+/*
 function setSubmitButtonState (isFormValid) {
   if (isFormValid) {
     addPlaceButton.removeAttribute('disabled');
@@ -98,3 +98,4 @@ function setSubmitButtonState (isFormValid) {
     addPlaceButton.classList.add('form__submit-button_disabled');
   }
 }
+*/
