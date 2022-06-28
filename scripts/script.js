@@ -27,7 +27,7 @@ const openPopup = (popup) => {
     if (evt.key === 'Escape') {
       closePopup(popupOpened);
     }
-  }*/escapeFromModal(evt));
+  }*/() => escapeFromModal(evt));
   popup.addEventListener('mousedown', closeByOverlay);
 }
 const closePopup = (popup) => {
@@ -37,11 +37,11 @@ const closePopup = (popup) => {
     if (evt.key === 'Escape') {
       closePopup(popupOpened);
     }
-  }*/escapeFromModal(evt));
+  }*/() => escapeFromModal(evt));
   popup.removeEventListener('mousedown', closeByOverlay);
 }
 
-function escapeFromModal (evt) {
+const escapeFromModal = (evt) => {
   const popupOpened = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
     closePopup(popupOpened);
@@ -90,16 +90,3 @@ document.querySelector('.image-close-btn').addEventListener('click', closeImage)
 const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
 const addPlaceButton = document.querySelector('.form__submit-button_create-element');
-
-// Валидация кнопки нового места
-/*
-function setSubmitButtonState (isFormValid) {
-  if (isFormValid) {
-    addPlaceButton.removeAttribute('disabled');
-    addPlaceButton.classList.remove('form__submit-button_disabled');
-  } else {
-    addPlaceButton.setAttribute('disabled', true);
-    addPlaceButton.classList.add('form__submit-button_disabled');
-  }
-}
-*/
