@@ -47,13 +47,12 @@ const popupPic = popupImage.querySelector('.popup__pic');
 const popupPicCaption = document.querySelector('.popup__pic-caption');
 
 // Функция открытия окна с указанной картинкой (из массива)
-const openImage = (data) => {
+export const openImage = (data) => {
   popupPic.src = data.link;
   popupPicCaption.textContent = data.name;
   openPopup(popupImage);
   return data;
 }
-
 const closeImage = () => closePopup(popupImage);
 
 document.querySelector('.image-close-btn').addEventListener('click', closeImage);

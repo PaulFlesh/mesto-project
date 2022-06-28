@@ -1,4 +1,5 @@
 import { initialCards } from "./data.js";
+import { openImage } from "./modal.js";
 
 const formPlace = document.querySelector('[name="element-creation"]');
 const elementsList = document.querySelector('.elements__list');
