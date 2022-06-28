@@ -1,6 +1,6 @@
 import { initialCards } from "./data.js";
 
-const formImage = document.querySelector('[name="element-creation"]');
+const formPlace = document.querySelector('[name="element-creation"]');
 const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
@@ -42,7 +42,7 @@ function addPlace (evt) {
   const newCard = createCard(data);
   elementsList.prepend(newCard);
   setSubmitButtonState (false);
-  formImage.reset();
+  formPlace.reset();
   closePlacePopup();
 }
-formImage.addEventListener('submit', addPlace);
+formPlace.addEventListener('submit', addPlace);
