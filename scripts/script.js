@@ -40,7 +40,7 @@ function escapeFromModal(evt) {
   }});
 }
 
-document.addEventListener('keyup', escapeFromModal(evt));
+document.addEventListener('keyup', escapeFromModal());
 /*
 const escapeFromModal = (evt) => {
   const popupOpened = document.querySelector('.popup_opened');
