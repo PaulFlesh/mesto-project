@@ -1,6 +1,6 @@
 import { initialCards } from "./data.js";
 import { openImage, closePlacePopup } from "./modal.js";
-import { toggleButtonState } from "./validation.js";
+//import { toggleButtonState } from "./validation.js";
 
 const formPlace = document.querySelector('[name="element-creation"]');
 const elementsList = document.querySelector('.elements__list');
@@ -26,18 +26,25 @@ const createCard = (data) => {
   return placeElement;
 }
 
-// Кладем карточку в начало списка
 const renderCard = (data, container) => {
   const place = createCard(data);
   container.append(place);
 }
 
-// Раскладываем карточки из исходного массива
 initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
 
-// Функция создания карточки из модального окна
+const toggleButtonState = (button, isActive, inactiveButtonClass) => {
+  if(isActive){
+      button.classList.remove(inactiveButtonClass);
+      button.disabled = false;
+  } else {
+      button.classList.add(inactiveButtonClass);
+      button.disabled = 'disabled';
+  }
+}
+
 function addPlace (evt) {
   evt.preventDefault();
   const data = {
@@ -47,7 +54,7 @@ function addPlace (evt) {
   const newCard = createCard(data);
   elementsList.prepend(newCard);
   formPlace.reset();
-  //toggleButtonState ();
+  toggleButtonState ();
   closePlacePopup();
 }
 formPlace.addEventListener('submit', addPlace);
