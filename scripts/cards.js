@@ -46,8 +46,8 @@ function addPlace (evt) {
   };
   const newCard = createCard(data);
   elementsList.prepend(newCard);
-  toggleButtonState (); ////
   formPlace.reset();
+  //toggleButtonState ();
   closePlacePopup();
 }
 formPlace.addEventListener('submit', addPlace);
