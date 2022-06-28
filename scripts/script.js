@@ -15,7 +15,8 @@ const popupOpened = document.querySelector('.popup_opened');
 
 const escapeFromModal = (evt) => {
   if (evt.key === 'Escape') {
-    popupOpened.classList.remove('popup_opened');
+    closePopup();
+    //popupOpened.classList.remove('popup_opened');
     console.log(evt.key);
   }
 };
