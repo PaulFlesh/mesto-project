@@ -1,6 +1,5 @@
 import { initialCards } from "./data.js";
 import { openImage, closePlacePopup } from "./modal.js";
-//import { toggleButtonState } from "./validation.js";
 
 const formPlace = document.querySelector('[name="element-creation"]');
 const elementsList = document.querySelector('.elements__list');
@@ -35,16 +34,6 @@ initialCards.forEach(function(item) {
   renderCard(item, elementsList);
 });
 
-const toggleButtonState = (button, isActive, inactiveButtonClass) => {
-  if(isActive){
-      button.classList.remove(inactiveButtonClass);
-      button.disabled = false;
-  } else {
-      button.classList.add(inactiveButtonClass);
-      button.disabled = 'disabled';
-  }
-}
-
 function addPlace (evt) {
   evt.preventDefault();
   const data = {
@@ -54,7 +43,6 @@ function addPlace (evt) {
   const newCard = createCard(data);
   elementsList.prepend(newCard);
   formPlace.reset();
-  toggleButtonState ();
   closePlacePopup();
 }
 formPlace.addEventListener('submit', addPlace);
