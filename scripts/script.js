@@ -22,22 +22,12 @@ const closeByOverlay = (evt) => {
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', function(evt) {
-    const popupOpened = document.querySelector('.popup_opened');
-    if (evt.key === 'Escape') {
-      closePopup(popupOpened);
-    }
-  });
+  document.addEventListener('keydown', escapeFromModal(evt));
   popup.addEventListener('mousedown', closeByOverlay);
 }
 const closePopup = (popup) => {
   
-  document.removeEventListener('keydown', function(evt) {
-    const popupOpened = document.querySelector('.popup_opened');
-    if (evt.key === 'Escape') {
-      closePopup(popupOpened);
-    }
-  });
+  document.removeEventListener('keydown', escapeFromModal(evt));
   popup.removeEventListener('mousedown', closeByOverlay);
   popup.classList.remove('popup_opened');
 }
