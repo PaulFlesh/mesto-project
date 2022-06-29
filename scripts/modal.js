@@ -11,7 +11,7 @@ const escapeFromModal = (evt) => {
     closePopup(popupOpened);
   }
 }
-document.addEventListener('keydown', escapeFromModal);
+//document.addEventListener('keydown', escapeFromModal);
 
 const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
@@ -22,8 +22,10 @@ const closeByOverlay = (evt) => {
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   popup.addEventListener('mousedown', closeByOverlay);
+  document.addEventListener('keydown', escapeFromModal);
 }
 const closePopup = (popup) => {
+  document.removeEventListener('keydown', escapeFromModal);
   popup.removeEventListener('mousedown', closeByOverlay);
   popup.classList.remove('popup_opened');
 }
