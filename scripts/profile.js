@@ -10,7 +10,7 @@ function submitProfileForm (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profession.textContent = jobInput.value;
-  closeProfilePopup(); /////
+  closeProfilePopup();
 }
 formProfile.addEventListener('submit', submitProfileForm); 
 

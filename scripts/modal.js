@@ -1,8 +1,5 @@
-// Объявление модальных окон 
 const profilePopup = document.querySelector('.popup_profile');
 const placePopup = document.querySelector('.popup_place');
-
-// Создание функций открытия/закрытия модальных окон профиля и нового места
 const popupOpened = document.querySelector('.popup_opened');
 
 const escapeFromModal = (evt) => {
@@ -11,7 +8,6 @@ const escapeFromModal = (evt) => {
     closePopup(popupOpened);
   }
 }
-//document.addEventListener('keydown', escapeFromModal);
 
 const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
@@ -43,12 +39,10 @@ document.querySelector('.profile-close-btn').addEventListener('click', closeProf
 document.querySelector('.profile__add-button').addEventListener('click', openPlacePopup);
 document.querySelector('.place-close-btn').addEventListener('click', closePlacePopup);
 
-// Объявление констант окна картинок
 const popupImage = document.querySelector('.popup_image');
 const popupPic = popupImage.querySelector('.popup__pic');
 const popupPicCaption = document.querySelector('.popup__pic-caption');
 
-// Функция открытия окна с указанной картинкой (из массива)
 export const openImage = (data) => {
   popupPic.src = data.link;
   popupPicCaption.textContent = data.name;

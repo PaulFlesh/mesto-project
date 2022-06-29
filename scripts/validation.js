@@ -11,7 +11,6 @@ const hideError = (errorElement, inputElement, inputErrorClass) => {
 const checkInputValidity = (formElement, inputElement, config) => {
   const isInputNotValid = !inputElement.validity.valid;
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-
   if(isInputNotValid) {
       showError(errorElement, inputElement, config);
   } else {
