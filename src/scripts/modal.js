@@ -1,10 +1,12 @@
+import { nameInput, jobInput, profileName, profession } from "./profile.js";
+
 export const profilePopup = document.querySelector('.popup_profile');
 export const placePopup = document.querySelector('.popup_place');
 const popupOpened = document.querySelector('.popup_opened');
 
 const escapeFromModal = (evt) => {
-  const popupOpened = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
   }
 }
@@ -26,7 +28,11 @@ export const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
 }
 
-const openProfilePopup = () => openPopup(profilePopup);
+const openProfilePopup = () => {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profession.textContent;
+  openPopup(profilePopup);
+}
 const openPlacePopup = () => openPopup(placePopup);
 
 document.querySelector('.profile__edit-button').addEventListener('click', openProfilePopup);
