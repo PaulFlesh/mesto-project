@@ -1,4 +1,4 @@
-import { closeProfilePopup } from "./modal.js";
+import { closePopup, profilePopup } from "./modal.js";
 
 const formProfile = document.querySelector('[name="profile-info"]');
 const nameInput = document.querySelector('[name="profile-title"]');
@@ -10,7 +10,7 @@ function submitProfileForm (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profession.textContent = jobInput.value;
-  closeProfilePopup();
+  closePopup(profilePopup);
 }
 formProfile.addEventListener('submit', submitProfileForm); 
 

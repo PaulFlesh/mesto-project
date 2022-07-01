@@ -1,12 +1,13 @@
 import { initialCards } from "./data.js";
-import { openImage, closePlacePopup } from "./modal.js";
+import { openImage, closePopup, placePopup } from "./modal.js";
+import * as all from "./validation.js";
 
 const formPlace = document.querySelector('[name="element-creation"]');
 const elementsList = document.querySelector('.elements__list');
 const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 const placeTemplateName = document.querySelector('#element-title');
 const placeTemplateImage = document.querySelector('#element-image');
-const addPlaceButton = document.querySelector('.form__submit-button_create-element');
+//const addPlaceButton = document.querySelector('.form__submit-button_create-element');
 
 const createCard = (data) => {
   const placeElement = placeTemplate.cloneNode(true);
@@ -43,6 +44,9 @@ function addPlace (evt) {
   const newCard = createCard(data);
   elementsList.prepend(newCard);
   formPlace.reset();
-  closePlacePopup();
+  const submitButton = formPlace.querySelector('.form__submit-button_create-element');
+  submitButton.classList.add('form__submit-button_disabled');
+  submitButton.disabled = 'disabled';
+  closePopup(placePopup);
 }
 formPlace.addEventListener('submit', addPlace);
