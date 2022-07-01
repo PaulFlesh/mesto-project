@@ -1,6 +1,5 @@
 import { initialCards } from "./data.js";
 import { openImage, closePopup, placePopup } from "./modal.js";
-import * as all from "./validation.js";
 
 const formPlace = document.querySelector('[name="element-creation"]');
 const elementsList = document.querySelector('.elements__list');
