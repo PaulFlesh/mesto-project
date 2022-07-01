@@ -12,7 +12,6 @@ const escapeFromModal = (evt) => {
 const closeByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
     closePopup(evt.target);
-    //evt.target.classList.remove('popup_opened');
   }
 };
 
@@ -27,12 +26,8 @@ export const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
 }
 
-
 const openProfilePopup = () => openPopup(profilePopup);
-//export const closeProfilePopup = () => closePopup(profilePopup);
-
 const openPlacePopup = () => openPopup(placePopup);
-//export const closePlacePopup = () => closePopup(placePopup);
 
 document.querySelector('.profile__edit-button').addEventListener('click', openProfilePopup);
 document.querySelector('.profile__add-button').addEventListener('click', openPlacePopup);
@@ -48,9 +43,6 @@ export const openImage = (data) => {
   openPopup(popupImage);
   return data;
 }
-const closeImage = () => closePopup(popupImage);
-
-//document.querySelector('.image-close-btn').addEventListener('click', closeImage);
 
 const popups = document.querySelectorAll('.popup');
 popups.forEach((popup) => {
