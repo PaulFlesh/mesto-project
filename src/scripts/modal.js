@@ -30,7 +30,8 @@ export const closePopup = (popup) => {
 }
 
 const openAvatarPopup = () => {
-  avatarInput.value = avatar.style.backgroundImage;
+  console.log(avatar);
+  avatarInput.value = avatar;
   openPopup(avatarPopup);
 }
 const openProfilePopup = () => {
@@ -40,6 +41,7 @@ const openProfilePopup = () => {
 }
 const openPlacePopup = () => openPopup(placePopup);
 
+document.querySelector('.profile__avatar').addEventListener('click', openAvatarPopup);
 document.querySelector('.profile__edit-button').addEventListener('click', openProfilePopup);
 document.querySelector('.profile__add-button').addEventListener('click', openPlacePopup);
 

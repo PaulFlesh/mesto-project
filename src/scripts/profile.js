@@ -1,8 +1,8 @@
 import { closePopup, avatarPopup, profilePopup } from "./modal.js";
 
 const formAvatar = document.querySelector('[name="avatar-info"]');
-export const avatarInput = document.querySelector('[name="avatar-link"]');
-export const avatar = document.querySelector('.profile__avatar::before');
+export const avatarInput = document.querySelector('[name="profile-avatar"]');
+export const avatar = window.getComputedStyle(document.querySelector('.profile__avatar'), ':before').getPropertyValue('background-image');
 
 const formProfile = document.querySelector('[name="profile-info"]');
 export const nameInput = document.querySelector('[name="profile-title"]');
@@ -12,7 +12,7 @@ export const profession = document.querySelector('.profile__subtitle');
 
 function submitAvatarForm (evt) {
   evt.preventDefault();
-  avatar.style.backgroundImage = avatarInput.value;
+  //avatar.style.backgroundImage = avatarInput.value;
   closePopup(avatarPopup);
 }
 formAvatar.addEventListener('submit', submitAvatarForm); 

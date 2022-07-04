@@ -1,11 +1,21 @@
-const config = {
+/*const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-13',
   headers: {
     authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
     'Content-Type': 'application/json'
   }
 }
-
+*/
+fetch('https://nomoreparties.co/v1/plus-cohort-13', {
+  headers: {
+    authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d'
+  }
+})
+  .then(res => res.json())
+  .then((result) => {
+    console.log(result);
+  }); 
+/*
 export const getInitialCards = () => {
   return fetch(`${config.baseUrl}/cards`, config.headers)
     .then(res => {
@@ -14,4 +24,4 @@ export const getInitialCards = () => {
       }
       return Promise.reject(`Ошибка: ${res.status}`);
     });
-} 
+} */

@@ -12,7 +12,9 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/edit-button.svg')%>">
+        <button type="button" class="profile__avatar">
+          <img class="profile__avatar-edit" src="<%=require('./images/edit-button.svg')%>">
+        </button>
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив&nbsp;Кусто</h1>
           <button type="button" class="profile__edit-button"></button>
@@ -36,7 +38,7 @@
           <fieldset class="form__input-container">
             <label class="form__field">
               <input type="url" class="form__item form__item_field_title" id="profile-avatar" name="profile-avatar" placeholder="Ссылка на аватар" required>
-              <span id="avatar-error" class="form__item-error"></span>
+              <span id="profile-avatar-error" class="form__item-error"></span>
             </label>
             <button type="submit" class="form__submit-button form__submit-button_edit-avatar" disabled="true">Сохранить</button>
           </fieldset>
