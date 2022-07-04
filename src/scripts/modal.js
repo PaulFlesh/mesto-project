@@ -1,5 +1,6 @@
-import { nameInput, jobInput, profileName, profession } from "./profile.js";
+import { avatarInput, nameInput, jobInput, avatar, profileName, profession } from "./profile.js";
 
+export const avatarPopup = document.querySelector('.popup_avatar');
 export const profilePopup = document.querySelector('.popup_profile');
 export const placePopup = document.querySelector('.popup_place');
 const popupOpened = document.querySelector('.popup_opened');
@@ -28,6 +29,10 @@ export const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
 }
 
+const openAvatarPopup = () => {
+  avatarInput.value = avatar.style.backgroundImage;
+  openPopup(avatarPopup);
+}
 const openProfilePopup = () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;

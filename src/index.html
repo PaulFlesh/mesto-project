@@ -12,7 +12,7 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>">
+        <img class="profile__avatar" src="<%=require('./images/edit-button.svg')%>">
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив&nbsp;Кусто</h1>
           <button type="button" class="profile__edit-button"></button>
@@ -29,6 +29,21 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022. Johnny Blade</p>
     </footer>
+    <div class="popup popup_avatar">
+      <div class="popup__container">
+        <form class="form" name="avatar-info" action="index.html" method="post" novalidate>
+          <h3 class="form__heading">Обновить аватар</h3>
+          <fieldset class="form__input-container">
+            <label class="form__field">
+              <input type="url" class="form__item form__item_field_title" id="profile-avatar" name="profile-avatar" placeholder="Ссылка на аватар" required>
+              <span id="avatar-error" class="form__item-error"></span>
+            </label>
+            <button type="submit" class="form__submit-button form__submit-button_edit-avatar" disabled="true">Сохранить</button>
+          </fieldset>
+        </form>
+        <button type="button" class="popup__close-button profile-close-btn" aria-label="Закрыть"></button>
+      </div>
+    </div>
     <div class="popup popup_profile">
       <div class="popup__container">
         <form class="form" name="profile-info" action="index.html" method="post" novalidate>
