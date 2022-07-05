@@ -19,7 +19,7 @@
         printUser();
         console.log(user.about);
 */
-        (function loadUser(userObj) {
+        function loadUser(userObj) {
           return new Promise((resolve, reject) => {
             const user = fetch(
               "https://nomoreparties.co/v1/plus-cohort-13/users/me",
@@ -38,7 +38,7 @@
             };
           })
           console.log(user.name);
-        })();
+        };
       },
       858: () => {
         var e = ["formSelector"];
