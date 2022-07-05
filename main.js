@@ -32,7 +32,7 @@
             console.log('error', response.status);
           }
          }
-         getUser();
+         let user = getUser();
       },
       858: () => {
         var e = ["formSelector"];
