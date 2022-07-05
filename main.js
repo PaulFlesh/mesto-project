@@ -26,7 +26,6 @@
           );
           if (response.ok) {
             let data = await response.json();
-            console.log(data);
             return data
           } else {
             console.log('error', response.status);
