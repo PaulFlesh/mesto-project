@@ -33,6 +33,7 @@
           }
          }
          let user = getUser();
+         console.log(user);
       },
       858: () => {
         var e = ["formSelector"];
