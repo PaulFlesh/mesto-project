@@ -1,13 +1,12 @@
 (() => {
   var e = {
       75: () => {
-        /*
         const user = fetch(
           "https://nomoreparties.co/v1/plus-cohort-13/users/me",
           { headers: { authorization: "eeb10f4c-568d-4124-bc82-28113d2b839d" } }
         )
           .then(function (e) {
-            return e.json();
+            return e.json(); // это и есть response промиза
           })
           .then(function (e) {
             return e;
@@ -18,21 +17,6 @@
           });
         };
         printUser();
-        */
-        async function getUser() {
-          let response = await fetch(
-            "https://nomoreparties.co/v1/plus-cohort-13/users/me",
-            { headers: { authorization: "eeb10f4c-568d-4124-bc82-28113d2b839d" } }
-          );
-          if (response.ok) {
-            let data = await response.json();
-            return data
-          } else {
-            console.log('error', response.status);
-          }
-         }
-         let user = getUser();
-         console.log(user);
       },
       858: () => {
         var e = ["formSelector"];
