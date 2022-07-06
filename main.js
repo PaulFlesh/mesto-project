@@ -6,7 +6,7 @@
           headers: { authorization: "eeb10f4c-568d-4124-bc82-28113d2b839d" },
         })
           .then(function (e) {
-            e.json();
+            return e.json();
           })
           .then(function (e) {
             console.log(e);
