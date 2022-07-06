@@ -31,7 +31,3 @@
 .profile__avatar:hover::before {
   opacity: .2;
 }
-
-.profile__avatar-edit {
-  width: 26px;
-}
