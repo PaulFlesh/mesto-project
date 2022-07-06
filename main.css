@@ -6,7 +6,8 @@
 .header__logo{max-width:142px}@media screen and (max-width:425px){.header__logo{width:32.42vw}}
 .content{margin:0 auto}@media screen and (max-width:990px){.content{max-width:88%}}
 .profile{align-items:center;display:flex;justify-content:space-between;margin:41px 0 0}@media screen and (max-width:750px){.profile{flex-direction:column;margin-top:38px}}
-.profile__avatar{align-items:center;background-color:#000;border:none;display:flex;flex-direction:column;height:120px;justify-content:center;margin:0;padding:0;position:relative;width:120px}.profile__avatar:before{background-image:url(baaaf98978f8a022c3f4.jpg);background-size:cover;border-radius:50%;content:"";height:100%;left:0;position:absolute;top:0;width:100%}.profile__avatar:hover{cursor:pointer}.profile__avatar:hover:before{opacity:.2}.profile__avatar-edit{width:26px}
+.profile__avatar{align-items:center;background-color:#000;border:none;display:flex;flex-direction:column;height:120px;justify-content:center;margin:0;padding:0;position:relative;width:120px}.profile__avatar:before{background-image:url(baaaf98978f8a022c3f4.jpg);background-size:cover;border-radius:50%;content:"";height:100%;left:0;position:absolute;top:0;width:100%}.profile__avatar:hover{cursor:pointer}.profile__avatar:hover:before{opacity:.2}
+.profile__avatar-edit{width:26px}
 .profile__info{display:grid;gap:8px 6px;grid-template-columns:24px auto 24px;margin:0;max-width:60%}@media screen and (max-width:880px){.profile__info{max-width:50vw}}@media screen and (max-width:750px){.profile__info{justify-items:center;margin-top:26px;max-width:98%}}@media screen and (max-width:425px){.profile__info{gap:7px 10px;grid-template-columns:18px auto 18px}}
 .profile__title{color:#fff;font-size:42px;font-weight:500;grid-column:2;line-height:48px;margin:0;max-width:100%;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:497px){.profile__title{font-size:8.438vw;line-height:10.313vw}}
 .profile__subtitle{color:#fff;font-size:18px;font-weight:400;grid-column:2;line-height:22px;margin:0;max-width:100%;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:415px){.profile__subtitle{font-size:4.375vw;line-height:5.313vw}}
@@ -17,10 +18,12 @@
 .element{background:#fff;border-radius:10px;height:361px;overflow:hidden;position:relative}
 .element__bin{background-color:transparent;background-image:url(fedb952ac866b7eb6b9b.png);background-position:50% 50%;background-repeat:no-repeat;border:none;cursor:pointer;height:19px;margin:0;padding:0;position:absolute;right:20px;top:20px;width:18px}.element__bin:hover{opacity:.6}
 .element__image{cursor:pointer;display:block;height:100%;max-height:282px;-o-object-fit:cover;object-fit:cover;width:100%}
-.element__description{align-items:center;display:flex;justify-content:space-between;margin:0 auto;max-width:85%;padding:25px 0}
+.element__description{align-items:center;display:flex;justify-content:space-between;margin:0 auto;max-width:85%;padding:21px 0}
 .element__name{color:#000;font-size:24px;font-weight:900;line-height:29px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.element__like-container{display:flex;flex-direction:column}
 .element__like{background-color:#fff;background-image:url(1ad06e85f169668a1f36.svg);background-position:50% 50%;background-size:cover;border:none;cursor:pointer;height:19px;min-width:22px;padding:0}.element__like:hover{opacity:.5}
 .element__like_active{background-image:url(35948469632d0421d697.svg);opacity:1}
+.element__like-count{font-size:10px;line-height:11px;margin:4px 0 0}
 .footer{margin:66px auto 0}@media screen and (max-width:990px){.footer{margin-top:49px;max-width:88%}}
 .footer__copyright{color:#545454;font-size:18px;font-weight:400;line-height:22px;margin:0}@media screen and (max-width:405px){.footer__copyright{font-size:4.375vw;line-height:5.313vw}}
 .popup{align-items:center;background:rgba(0,0,0,.5);display:flex;height:100%;justify-content:center;left:0;opacity:0;pointer-events:none;position:fixed;top:0;transition:visibility 0s .6s,opacity .6s linear;visibility:hidden;width:100%}
