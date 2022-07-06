@@ -8,8 +8,9 @@
           .then(function (e) {
             return e.json();
           })
-          .then(function (e) {
-            console.log(e);
+          .then(function (data) {
+            document.querySelector('.profile__title').textContent = data.name;
+            console.log(document.querySelector('.profile__title').textContent);
           });
       },
       858: () => {
