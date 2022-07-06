@@ -8,11 +8,6 @@
           .then(function (e) {
             return e.json();
           })
-          .then(function (data) {
-            avatar = url(data.avatar);
-            profileName.textContent = data.name;
-            profession.textContent = data.about;
-          });
       },
       858: () => {
         var e = ["formSelector"];
