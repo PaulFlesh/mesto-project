@@ -9,8 +9,9 @@
             return e.json();
           })
           .then(function (data) {
-            document.querySelector('.profile__title').textContent = data.name;
-            console.log(document.querySelector('.profile__title').textContent);
+            avatar = url(data.avatar);
+            profileName.textContent = data.name;
+            profession.textContent = data.about;
           });
       },
       858: () => {
