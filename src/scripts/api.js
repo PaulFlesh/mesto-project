@@ -5,35 +5,40 @@ const config = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-13',
   headers: {
     authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
+};
+
+const onResponse = (response) => {
+  return response.ok ? response.json() : Promise.reject(response);
+};
+
+function getUserInfo() {
+  return fetch(`${config.url}/users/me`, {
+    headers: config.headers,
+  }).then(onResponse);
+}
+getUserInfo().then((data) => {
+  avatar = data.avatar;
+  profileName.textContent = data.name;
+  profession.textContent = data.about;
+})
+
+function getAllInfo() {
+  return Promise.all([getCards(), getUserInfo()])
 }
 
-function getUserInfo() { // Вытаскиваем объект пользователя
-  return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-13/users/me', {
-    method: 'GET',
-    headers: {
-      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .then(data => {
-      avatar = data.avatar;
-      profileName.textContent = data.name;
-      profession.textContent = data.about;
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+function getInitialCards() {
+  return fetch(`${config.url}/cards`, {
+    headers: config.headers,
+  }).then(onResponse);
 }
-getUserInfo(); // вызываем при загрузке страницы
-
+getInitialCards().then(data => {
+  data.reverse().forEach((item) => {
+    renderCard(item, elementsList);
+  });
+});
+/*
 export const getInitialCards = () => { // Загружаем карточки из пула в инете
   return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-13/cards', {
     method: 'GET',
@@ -58,7 +63,8 @@ export const getInitialCards = () => { // Загружаем карточки и
     })
 }
 getInitialCards();
-
+*/
+/*
 export const patchUserInfo = (data) => { // Редактируем объект пользователя
   return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-13/cards', {
     method: 'PATCH',
@@ -88,6 +94,16 @@ export const patchUserInfo = (data) => { // Редактируем объект 
       renderLoading(false);
     })
 }
+*/
+
+function editProfile(data) {
+  return fetch(`${config.url}/users/me`, {
+    method: "PATCH",
+    headers: config.headers,
+    body: JSON.stringify(data),
+  }).then(onResponse);
+}
+
 /*
 function createNewCard(data) { // Добавляем новое место
   return fetch(`${config.baseUrl}/cards`, {
@@ -134,7 +150,16 @@ function deleteCard(cardId) { // Удаляем карточку места
     .catch((err) => {
       console.log(err);
     })
-}*/
+}
+*/
+
+function likeCard(dataId) {
+  return fetch(`${config.url}/cards/likes/${dataId}`, {
+    method: "PUT",
+    headers: config.headers,
+  }).then(onResponse);
+}
+
 /*
 function likeCard(cardId) {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
@@ -154,7 +179,14 @@ function likeCard(cardId) {
       console.log(err);
     })
 }
-
+*/
+function unlikeCard(dataId) {
+  return fetch(`${config.url}/cards/likes/${dataId}`, {
+    method: "DELETE",
+    headers: config.headers,
+  }).then(onResponse);
+}
+/*
 function unlikeCard(cardId) {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: 'DELETE',
@@ -172,7 +204,18 @@ function unlikeCard(cardId) {
     .catch((err) => {
       console.log(err);
     })
-}*/
+}
+*/
+
+function editUserAvatar(data) {
+  return fetch(`${config.url}/users/me/avatar`, {
+    method: "PATCH",
+    headers: config.headers,
+    body: JSON.stringify(data),
+  }).then(onResponse);
+}
+
+
 /*
 function editAvatar(data) {
   return fetch(`${config.baseUrl}/users/me/avatar`, {
