@@ -12,7 +12,10 @@ const config = {
 function getUserInfo() { // Вытаскиваем объект пользователя
   return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-13/users/me', {
     method: 'GET',
-    config.headers
+    headers: {
+      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
+      'Content-Type': 'application/json'
+    }
   })
     .then(res => {
       if (res.ok) {
@@ -32,9 +35,12 @@ function getUserInfo() { // Вытаскиваем объект пользова
 getUserInfo(); // вызываем при загрузке страницы
 
 export const getInitialCards = () => { // Загружаем карточки из пула в инете
-  return fetch(`${config.baseUrl}/cards`, {
+  return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-13/cards', {
     method: 'GET',
-    config.headers
+    headers: {
+      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
+      'Content-Type': 'application/json'
+    }
   })
     .then(res => {
       if (res.ok) {
@@ -44,18 +50,22 @@ export const getInitialCards = () => { // Загружаем карточки и
     })
     .then(data => {
       data.forEach(function(item) {
-        renderCard(item, elementsList); // Если что, явно укажешь контейнер и карточки
+        renderCard(item, elementsList);
       });
     })
     .catch((err) => {
       console.log(err);
     })
 }
+getInitialCards();
 
 export const patchUserInfo = (data) => { // Редактируем объект пользователя
-  return fetch(`${config.baseUrl}/users/me`, {
+  return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-13/cards', {
     method: 'PATCH',
-    config.headers,
+    headers: {
+      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
       name: data.name,
       about: data.about
@@ -105,12 +115,15 @@ function createNewCard(data) { // Добавляем новое место
     .finally(() => {
       renderLoading(false);
     })
-}
-*/
+}*/
+/*
 function deleteCard(cardId) { // Удаляем карточку места
   return fetch(`${config.baseUrl}/cards/${cardId}`, {
     method: 'DELETE',
-    config.headers
+    headers: {
+      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
+      'Content-Type': 'application/json'
+    },
   })
     .then(res => {
       if (res.ok) {
@@ -121,12 +134,15 @@ function deleteCard(cardId) { // Удаляем карточку места
     .catch((err) => {
       console.log(err);
     })
-}
-
+}*/
+/*
 function likeCard(cardId) {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: 'PUT',
-    config.headers
+    headers: {
+      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
+      'Content-Type': 'application/json'
+    },
   })
     .then(res => {
       if (res.ok) {
@@ -142,7 +158,10 @@ function likeCard(cardId) {
 function unlikeCard(cardId) {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: 'DELETE',
-    config.headers
+    headers: {
+      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
+      'Content-Type': 'application/json'
+    },
   })
     .then(res => {
       if (res.ok) {
@@ -153,12 +172,15 @@ function unlikeCard(cardId) {
     .catch((err) => {
       console.log(err);
     })
-}
-
+}*/
+/*
 function editAvatar(data) {
   return fetch(`${config.baseUrl}/users/me/avatar`, {
     method: 'PATCH',
-    config.headers,
+    headers: {
+      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
       avatar: data.avatar
     })
@@ -175,8 +197,8 @@ function editAvatar(data) {
     .finally(() => {
       renderLoading(false);
     })
-}
-
+}*/
+/*
 // Тест. Пока для всех сабмитов сразу
 export function renderLoading(isLoading) {
   if (isLoading) {
@@ -188,3 +210,4 @@ export function renderLoading(isLoading) {
     submitBtns.forEach(button => button.textContent.reset());
   }
 }
+*/
