@@ -1,4 +1,6 @@
 import { avatarInput, nameInput, jobInput, avatar, profileName, profession } from "./profile.js";
+import { hideError } from "./validation.js";
+import { getUserInfo } from "./api.js";
 
 export const avatarPopup = document.querySelector('.popup_avatar');
 export const profilePopup = document.querySelector('.popup_profile');
@@ -30,15 +32,20 @@ export const closePopup = (popup) => {
 }
 
 const openAvatarPopup = () => {
-  console.log(avatar);
-  avatarInput.value = avatar;
-  openPopup(avatarPopup);
-}
+  hideError();
+  getUserInfo()
+  .then((dataFromServer) => {
+    avatarInput.value = dataFromServer.avatar;
+    openPopup(avatarPopup);
+    //disableButton(buttonAvatarPopup, validationConfig);
+  })
+  .catch(err => console.log(err))
+};
 const openProfilePopup = () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
   openPopup(profilePopup);
-}
+};
 const openPlacePopup = () => openPopup(placePopup);
 
 document.querySelector('.profile__avatar').addEventListener('click', openAvatarPopup);

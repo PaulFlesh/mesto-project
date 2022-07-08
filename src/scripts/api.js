@@ -22,48 +22,38 @@ getUserInfo().then((data) => {
   avatar = data.avatar;
   profileName.textContent = data.name;
   profession.textContent = data.about;
+  userId = user._id;
 })
 
-function getAllInfo() {
-  return Promise.all([getCards(), getUserInfo()])
-}
-
-function getInitialCards() {
+export function getInitialCards() {
   return fetch(`${config.url}/cards`, {
     headers: config.headers,
   }).then(onResponse);
 }
 getInitialCards().then(data => {
-  data.reverse().forEach((item) => {
+  data.forEach((item) => {
     renderCard(item, elementsList);
   });
 });
-/*
-export const getInitialCards = () => { // Загружаем карточки из пула в инете
-  return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-13/cards', {
-    method: 'GET',
-    headers: {
-      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .then(data => {
-      data.forEach(function(item) {
-        renderCard(item, elementsList);
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+
+let userId = null;
+
+function getAllInfo() {
+  return Promise.all([getCards(), getUserInfo()])
 }
-getInitialCards();
-*/
+getAllInfo()
+  .then(([cards, user]) => {
+    nameInfo.textContent = user.name;
+    jobInfo.textContent = user.about;
+    userAvatar.src = user.avatar;
+    userId = user._id;
+    cards.reverse().forEach((item) => {
+      renderCard(data, postsContainer, userId);
+    });
+  
+});
+
+
 /*
 export const patchUserInfo = (data) => { // Редактируем объект пользователя
   return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-13/cards', {
@@ -104,34 +94,61 @@ function editProfile(data) {
   }).then(onResponse);
 }
 
-/*
-function createNewCard(data) { // Добавляем новое место
-  return fetch(`${config.baseUrl}/cards`, {
-    method: 'POST',
-    config.headers,
-    body: JSON.stringify({
-      name: data.name,
-      link: data.link
-    })
+function handleProfileChanges(evt) {
+  evt.preventDefault();
+  //renderLoading(buttonNamePopup, true);
+  editProfile({name: nameInput.value, about: jobInput.value})
+  .then((dataFromServer) => {
+    nameInfo.textContent = nameInput.value;
+    jobInfo.textContent = jobInput.value;
   })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
+  .then(() => {
+    closePopup(profilePopup);
+  })
+  .catch(err => console.log(err))
+  /*
+  .finally(() => {
+    renderLoading(buttonNamePopup, false);
+  })
+  */
+}
+
+function changeUserAvatar(evt) {
+  evt.preventDefault();
+  //renderLoading(buttonAvatarPopup, true);
+  editUserAvatar({avatar: avatarInput.value})
+  .then((dataFromServer) => {
+    userAvatar.src = avatarInput.value;
+  })
+  .then(() => {
+    closePopup(avatarPopup);
+  })
+  .catch(err => console.log(err))
+  /*
+  .finally(() => {
+    renderLoading(buttonAvatarPopup, false);
+  })
+  */
+}
+
+const addNewCards = function(evt) {
+  evt.preventDefault();
+  //renderLoading(buttonPostPopup, true);
+  addCard({name: inputPlaceTitle.value, link: inputPlaceLink.value})
+    .then((dataFromServer) => {
+      renderCard(dataFromServer, postsContainer, userId);
     })
-    .then((data) => {
-      placeName.textContent = data.name;
-      placeImage.src = data.link;
-      placeImage.alt = data.name;
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+    .catch(err => console.log(err))
+    /*
     .finally(() => {
-      renderLoading(false);
+      renderLoading(buttonPostPopup, false);
     })
-}*/
+    */
+  formPlace.reset();
+  //disableButton(buttonPostPopup, validationConfig);
+  closePopup(placePopup);
+}
+
 /*
 function deleteCard(cardId) { // Удаляем карточку места
   return fetch(`${config.baseUrl}/cards/${cardId}`, {
@@ -160,52 +177,12 @@ function likeCard(dataId) {
   }).then(onResponse);
 }
 
-/*
-function likeCard(cardId) {
-  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
-    method: 'PUT',
-    headers: {
-      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
-      'Content-Type': 'application/json'
-    },
-  })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-}
-*/
 function unlikeCard(dataId) {
   return fetch(`${config.url}/cards/likes/${dataId}`, {
     method: "DELETE",
     headers: config.headers,
   }).then(onResponse);
 }
-/*
-function unlikeCard(cardId) {
-  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
-    method: 'DELETE',
-    headers: {
-      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
-      'Content-Type': 'application/json'
-    },
-  })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-}
-*/
 
 function editUserAvatar(data) {
   return fetch(`${config.url}/users/me/avatar`, {
@@ -214,43 +191,3 @@ function editUserAvatar(data) {
     body: JSON.stringify(data),
   }).then(onResponse);
 }
-
-
-/*
-function editAvatar(data) {
-  return fetch(`${config.baseUrl}/users/me/avatar`, {
-    method: 'PATCH',
-    headers: {
-      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      avatar: data.avatar
-    })
-  })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      renderLoading(false);
-    })
-}*/
-/*
-// Тест. Пока для всех сабмитов сразу
-export function renderLoading(isLoading) {
-  if (isLoading) {
-    //ищем сабмит нужной формы и меняем textContent
-    const submitBtns = document.querySelectorAll('.form__submit-button');
-    submitBtns.forEach(button => button.textContent = 'Сохранение...');
-  } else {
-    //возвращаем исходный textContent
-    submitBtns.forEach(button => button.textContent.reset());
-  }
-}
-*/

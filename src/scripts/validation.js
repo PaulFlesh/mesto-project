@@ -1,9 +1,9 @@
-const showError = (errorElement, inputElement, inputErrorClass) => {
+export const showError = (errorElement, inputElement, inputErrorClass) => {
   errorElement.textContent = inputElement.validationMessage;
   inputElement.classList.add(inputErrorClass);
 }
 
-const hideError = (errorElement, inputElement, inputErrorClass) => {
+export const hideError = (errorElement, inputElement, inputErrorClass) => {
   errorElement.textContent = inputElement.validationMessage;
   inputElement.classList.remove(inputErrorClass);
 }
