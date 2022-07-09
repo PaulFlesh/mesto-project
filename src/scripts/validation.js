@@ -18,7 +18,7 @@ const checkInputValidity = (formElement, inputElement, config) => {
   }
 }
 
-const toggleButtonState = (button, isActive, inactiveButtonClass) => {
+export const toggleButtonState = (button, isActive, inactiveButtonClass) => {
   if(isActive){
       button.classList.remove(inactiveButtonClass);
       button.disabled = false;
@@ -51,7 +51,7 @@ const enableValidation = ({formSelector, ...rest}) => {
   })
 }
 
-const validationConfig = {
+export const validationConfig = {
   formSelector: '.form',
   inputSelector: '.form__item',
   submitButtonSelector: '.form__submit-button',

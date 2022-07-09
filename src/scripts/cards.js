@@ -1,66 +1,82 @@
-import { getUserInfo, closePopup, placePopup, userId } from "./api.js";
+import { getAllInfo, userId, changeLikeStatus, removeCard } from "./api.js";
 import { openImage, closePopup, placePopup } from "./modal.js";
+import { toggleButtonState, validationConfig } from "./validation.js";
 
 const formPlace = document.querySelector('[name="element-creation"]');
 export const elementsList = document.querySelector('.elements__list');
 export const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
-const placeTemplateName = document.querySelector('#element-title');
-const placeTemplateImage = document.querySelector('#element-image');
-//const addPlaceButton = document.querySelector('.form__submit-button_create-element');
+export const placeTemplateName = document.querySelector('#element-title');
+export const placeTemplateImage = document.querySelector('#element-image');
+const buttonPostPopup = document.querySelector('.form__submit-button_create-element');
 
-export const createCard = (data) => {
+//удаление карточки
+const clickButtonDelete = (element) => {
+  element.remove();
+  element = null;
+}
+
+const isLiked = (likesArray, userId) => {
+  return Boolean(likesArray.find((likeObj) => {
+    return likeObj._id === userId;
+  }))
+}
+
+const updateLikesState = (cardElement, likesArray, userId) => {
+  const placeLike = cardElement.querySelector('.element__like');
+  const likeCounter = cardElement.querySelector('.element__like-count');
+  likeCounter.textContent = likesArray.length;
+  if (isLiked(likesArray, userId)) {
+    placeLike.classList.add('element__like_active');
+  } else {
+    placeLike.classList.remove('element__like_active');
+  }
+}
+
+export const createCard = (dataCard, userId, handleChangeLikeStatus, handleDeleteCard) => {
   const placeElement = placeTemplate.cloneNode(true);
   const placeName = placeElement.querySelector('.element__name');
   const placeImage = placeElement.querySelector('.element__image');
   const placeBin = placeElement.querySelector('.element__bin');
   const placeLike = placeElement.querySelector('.element__like');
   const likeCounter = placeElement.querySelector('.element__like-count');
-  placeName.textContent = data.name;
-  placeImage.src = data.link;
-  placeImage.alt = data.name;
-  likeCounter.textContent = data.likes.length;
-
-  getUserInfo()
-  .then((dataFromServer) => {
-    if (data.owner._id === dataFromServer._id) {
-      placeBin.style.display = 'block';
-    }
-  })
-  .catch(err => console.log(err))
-
-  placeImage.addEventListener('click', () => openImage(data));
-  const removePlace = () => placeElement.remove();
-  placeBin.addEventListener('click', () => removePlace());
-  const toggleLike = () => placeLike.classList.toggle('element__like_active');
-  placeLike.addEventListener('click', () => toggleLike());
+  placeName.textContent = dataCard.name;
+  placeImage.src = dataCard.link;
+  placeImage.alt = dataCard.name;
+  updateLikesState(placeElement, dataCard.likes, userId);
+  if (dataCard.owner._id !== userId) {
+    placeBin.remove();
+  }
+  placeImage.addEventListener('click', () => openImage(dataCard));
+  placeBin.addEventListener('click', () => handleDeleteCard(cardElement, dataCard._id));
+  placeLike.addEventListener('click', () => {handleChangeLikeStatus(placeElement, dataCard._id, placeLike.classList.contains('element__like_active'))});
   return placeElement;
 }
 
+const handleDeleteCard = (placeElement, cardId) => {
+  removeCard(cardId)
+    .then(() => {
+      clickButtonDelete(placeElement);
+    })
+    .catch(err => console.log(err));
+}
+
+const handleChangeLikeStatus = (placeElement, cardId, isLiked) => {
+  changeLikeStatus(cardId, isLiked)
+    .then((dataFromServer) => {
+      updateLikesState(placeElement, dataFromServer.likes, userId);
+    })
+    .catch(err => console.log(err));
+}
+
 export const renderCard = (data, container, userId) => {
-  const place = createCard(data, userId);
+  const place = createCard(data, userId, handleChangeLikeStatus, handleDeleteCard);
   container.append(place);
 }
-/*
-function addPlace (evt) {
+
+export const addPlace = (evt) => {
+  evt.preventDefault();
   //renderLoading(buttonPostPopup, true);
-  const data = {
-    name: placeTemplateName.value,
-    link: placeTemplateImage.value    
-  };
-  //
-  const newCard = createCard(data);
-  elementsList.prepend(newCard);
-  formPlace.reset();
-  const submitButton = formPlace.querySelector('.form__submit-button_create-element');
-  submitButton.classList.add('form__submit-button_disabled');
-  submitButton.disabled = 'disabled';
-  closePopup(placePopup);
-}
-formPlace.addEventListener('submit', addPlace);
-*/
-function addPlace (evt) {
-  //renderLoading(buttonPostPopup, true);
-  createCard({name: inputPlaceTitle.value, link: inputPlaceSubtitle.value})
+  createCard({ name: placeTemplateName.value, link: placeTemplateImage.value })
   .then((dataFromServer) => {
     renderCard(dataFromServer, elementsList, userId);
   })
@@ -71,7 +87,7 @@ function addPlace (evt) {
   })
   */
   formPlace.reset();
-  //disableButton(buttonPostPopup, validationConfig);
+  toggleButtonState(buttonPostPopup, false, validationConfig);
   closePopup(placePopup);
 }
 formPlace.addEventListener('submit', addPlace);

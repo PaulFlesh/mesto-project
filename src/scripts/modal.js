@@ -32,19 +32,28 @@ export const closePopup = (popup) => {
 }
 
 const openAvatarPopup = () => {
-  hideError();
+  //hideError();
   getUserInfo()
   .then((dataFromServer) => {
-    avatarInput.value = dataFromServer.avatar;
+    console.log(dataFromServer);
+    //avatarInput.value = dataFromServer.avatar;
     openPopup(avatarPopup);
     //disableButton(buttonAvatarPopup, validationConfig);
   })
   .catch(err => console.log(err))
 };
+
 const openProfilePopup = () => {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profession.textContent;
-  openPopup(profilePopup);
+  //hideError();
+  getUserInfo()
+  .then((dataFromServer) => {
+    console.log(dataFromServer);
+    nameInput.value = dataFromServer.name;
+    jobInput.value = dataFromServer.about;
+    openPopup(profilePopup);
+    //disableButton(buttonAvatarPopup, validationConfig);
+  })
+  .catch(err => console.log(err))
 };
 const openPlacePopup = () => openPopup(placePopup);
 

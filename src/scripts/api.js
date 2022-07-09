@@ -1,92 +1,33 @@
-import { avatar, profileName, profession } from './profile.js';
-import { renderCard, createCard, placeTemplate, elementsList } from './cards.js';
+import { avatarOnPage, profileName, profession } from './profile.js';
+import { renderCard, elementsList } from './cards.js';
 
 const config = {
-  baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-13',
+  url: 'https://mesto.nomoreparties.co/v1/plus-cohort-13',
   headers: {
     authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
     'Content-Type': 'application/json',
   },
 };
 
+export let userId = null;
+
 const onResponse = (response) => {
   return response.ok ? response.json() : Promise.reject(response);
 };
 
-function getUserInfo() {
+export function getUserInfo() {
   return fetch(`${config.url}/users/me`, {
     headers: config.headers,
   }).then(onResponse);
 }
-getUserInfo().then((data) => {
-  avatar = data.avatar;
-  profileName.textContent = data.name;
-  profession.textContent = data.about;
-  userId = user._id;
-})
 
 export function getInitialCards() {
   return fetch(`${config.url}/cards`, {
     headers: config.headers,
   }).then(onResponse);
 }
-getInitialCards().then(data => {
-  data.forEach((item) => {
-    renderCard(item, elementsList);
-  });
-});
 
-let userId = null;
-
-function getAllInfo() {
-  return Promise.all([getCards(), getUserInfo()])
-}
-getAllInfo()
-  .then(([cards, user]) => {
-    nameInfo.textContent = user.name;
-    jobInfo.textContent = user.about;
-    userAvatar.src = user.avatar;
-    userId = user._id;
-    cards.reverse().forEach((item) => {
-      renderCard(data, postsContainer, userId);
-    });
-  
-});
-
-
-/*
-export const patchUserInfo = (data) => { // Редактируем объект пользователя
-  return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-13/cards', {
-    method: 'PATCH',
-    headers: {
-      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      name: data.name,
-      about: data.about
-    })
-  })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .then((data) => {
-      profileName.textContent = data.name;
-      profession.textContent = data.about;
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      renderLoading(false);
-    })
-}
-*/
-
-function editProfile(data) {
+export function editProfile(data) {
   return fetch(`${config.url}/users/me`, {
     method: "PATCH",
     headers: config.headers,
@@ -94,100 +35,65 @@ function editProfile(data) {
   }).then(onResponse);
 }
 
-function handleProfileChanges(evt) {
-  evt.preventDefault();
-  //renderLoading(buttonNamePopup, true);
-  editProfile({name: nameInput.value, about: jobInput.value})
-  .then((dataFromServer) => {
-    nameInfo.textContent = nameInput.value;
-    jobInfo.textContent = jobInput.value;
-  })
-  .then(() => {
-    closePopup(profilePopup);
-  })
-  .catch(err => console.log(err))
-  /*
-  .finally(() => {
-    renderLoading(buttonNamePopup, false);
-  })
-  */
+export function editAvatar(data) {
+  return fetch(`${config.url}/users/me/avatar`, {
+    method: "PATCH",
+    headers: config.headers,
+    body: JSON.stringify(data),
+  }).then(onResponse);
 }
 
-function changeUserAvatar(evt) {
-  evt.preventDefault();
-  //renderLoading(buttonAvatarPopup, true);
-  editUserAvatar({avatar: avatarInput.value})
-  .then((dataFromServer) => {
-    userAvatar.src = avatarInput.value;
-  })
-  .then(() => {
-    closePopup(avatarPopup);
-  })
-  .catch(err => console.log(err))
-  /*
-  .finally(() => {
-    renderLoading(buttonAvatarPopup, false);
-  })
-  */
+export function getAllInfo() {
+  return Promise.all([getInitialCards(), getUserInfo()])
 }
 
-const addNewCards = function(evt) {
-  evt.preventDefault();
-  //renderLoading(buttonPostPopup, true);
-  addCard({name: inputPlaceTitle.value, link: inputPlaceLink.value})
-    .then((dataFromServer) => {
-      renderCard(dataFromServer, postsContainer, userId);
-    })
-    .catch(err => console.log(err))
-    /*
-    .finally(() => {
-      renderLoading(buttonPostPopup, false);
-    })
-    */
-  formPlace.reset();
-  //disableButton(buttonPostPopup, validationConfig);
-  closePopup(placePopup);
+// Выгружаем с сервера карточки из пула + данные пользователя 
+getAllInfo()
+  .then(([cards, user]) => {
+    profileName.textContent = user.name;
+    profession.textContent = user.about;
+    avatarOnPage = user.avatar;
+    console.log(avatarOnPage);
+    console.log(user.avatar);
+    userId = user._id;
+    
+    cards.forEach((data) => {
+      renderCard(data, elementsList, userId);
+    });
+});
+
+export function addCard(data) {
+  return fetch(`${config.url}/cards`, {
+    method: "POST",
+    headers: config.headers,
+    body: JSON.stringify(data),
+  }).then(onResponse);
 }
 
-/*
-function deleteCard(cardId) { // Удаляем карточку места
-  return fetch(`${config.baseUrl}/cards/${cardId}`, {
-    method: 'DELETE',
-    headers: {
-      authorization: 'eeb10f4c-568d-4124-bc82-28113d2b839d',
-      'Content-Type': 'application/json'
-    },
-  })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+export function removeCard(dataId) {
+  return fetch(`${config.url}/cards/${dataId}`, {
+    method: "DELETE",
+    headers: config.headers,
+  }).then(onResponse);
 }
-*/
 
-function likeCard(dataId) {
+export function likeCard(dataId) {
   return fetch(`${config.url}/cards/likes/${dataId}`, {
     method: "PUT",
     headers: config.headers,
   }).then(onResponse);
 }
 
-function unlikeCard(dataId) {
+export function unlikeCard(dataId) {
   return fetch(`${config.url}/cards/likes/${dataId}`, {
     method: "DELETE",
     headers: config.headers,
   }).then(onResponse);
 }
 
-function editUserAvatar(data) {
-  return fetch(`${config.url}/users/me/avatar`, {
-    method: "PATCH",
+export function changeLikeStatus(dataId, isLike) {
+  return fetch(`${config.url}/cards/likes/${dataId}`, {
+    method: isLike ? "DELETE" : "PUT",
     headers: config.headers,
-    body: JSON.stringify(data),
   }).then(onResponse);
 }
