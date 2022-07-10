@@ -55,7 +55,7 @@ getAllInfo()
     avatarOnPage.src = user.avatar;
     userId = user._id;
     
-    cards.forEach((data) => {
+    cards.reverse().forEach((data) => {
       renderCard(data, elementsList, userId);
     });
 });

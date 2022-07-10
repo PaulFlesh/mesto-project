@@ -68,7 +68,7 @@ const handleChangeLikeStatus = (placeElement, cardId, isLiked) => {
 
 export const renderCard = (data, container, userId) => {
   const place = createCard(data, userId, handleChangeLikeStatus, handleDeleteCard);
-  container.append(place);
+  container.prepend(place);
 }
 
 export const addPlace = (evt) => {
@@ -76,7 +76,6 @@ export const addPlace = (evt) => {
   renderLoading(buttonPostPopup, true);
   postCard({ name: placeTemplateName.value, link: placeTemplateImage.value })
   .then((dataFromServer) => {
-    console.log(dataFromServer);
     renderCard(dataFromServer, elementsList, userId);
   })
   .catch(err => console.log(err))
