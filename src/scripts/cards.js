@@ -76,6 +76,7 @@ export const addPlace = (evt) => {
   renderLoading(buttonPostPopup, true);
   postCard({ name: placeTemplateName.value, link: placeTemplateImage.value })
   .then((dataFromServer) => {
+    console.log(dataFromServer);
     renderCard(dataFromServer, elementsList, userId);
   })
   .catch(err => console.log(err))
