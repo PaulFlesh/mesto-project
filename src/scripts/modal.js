@@ -1,5 +1,5 @@
-import { avatarInput, nameInput, jobInput, avatar, profileName, profession } from "./profile.js";
-import { hideError } from "./validation.js";
+import { avatarInput, nameInput, jobInput, formAvatar, formProfile } from "./profile.js";
+import { formPlace } from "./cards.js";
 import { getUserInfo } from "./api.js";
 
 export const avatarPopup = document.querySelector('.popup_avatar');
@@ -20,6 +20,22 @@ const closeByOverlay = (evt) => {
   }
 };
 
+// Функция очищения стиля ошибки у поля ввода и отключения спана с ошибкой при открытии модального окна
+const clearError = (formElement) => {
+  const inputsErrorStyle = formElement.querySelectorAll('.form__item');
+  inputsErrorStyle.forEach(errorStyle => errorStyle.classList.remove('form__item_type_error'));
+  const errorElements = formElement.querySelectorAll('.form__item-error');
+  errorElements.forEach(errorElement => errorElement.textContent = '');
+}
+
+export const renderLoading = (buttonElement, isLoading) => {
+  if (isLoading) {
+    buttonElement.textContent = 'Сохранение...';
+  } else {
+    buttonElement.textContent = 'Сохранить';
+  }
+}
+
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   popup.addEventListener('mousedown', closeByOverlay);
@@ -32,30 +48,30 @@ export const closePopup = (popup) => {
 }
 
 const openAvatarPopup = () => {
-  //hideError();
   getUserInfo()
   .then((dataFromServer) => {
-    console.log(dataFromServer);
-    //avatarInput.value = dataFromServer.avatar;
+    avatarInput.value = dataFromServer.avatar;
+    clearError(formAvatar);
     openPopup(avatarPopup);
-    //disableButton(buttonAvatarPopup, validationConfig);
   })
   .catch(err => console.log(err))
 };
 
 const openProfilePopup = () => {
-  //hideError();
   getUserInfo()
   .then((dataFromServer) => {
-    console.log(dataFromServer);
     nameInput.value = dataFromServer.name;
     jobInput.value = dataFromServer.about;
+    clearError(formProfile);
     openPopup(profilePopup);
-    //disableButton(buttonAvatarPopup, validationConfig);
   })
   .catch(err => console.log(err))
 };
-const openPlacePopup = () => openPopup(placePopup);
+
+const openPlacePopup = () => {
+  clearError(formPlace);
+  openPopup(placePopup);
+}
 
 document.querySelector('.profile__avatar').addEventListener('click', openAvatarPopup);
 document.querySelector('.profile__edit-button').addEventListener('click', openProfilePopup);

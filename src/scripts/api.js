@@ -1,4 +1,4 @@
-import { avatarOnPage, profileName, profession } from './profile.js';
+import { profileName, profession, avatarOnPage } from './profile.js';
 import { renderCard, elementsList } from './cards.js';
 
 const config = {
@@ -52,9 +52,7 @@ getAllInfo()
   .then(([cards, user]) => {
     profileName.textContent = user.name;
     profession.textContent = user.about;
-    avatarOnPage = user.avatar;
-    console.log(avatarOnPage);
-    console.log(user.avatar);
+    avatarOnPage.src = user.avatar;
     userId = user._id;
     
     cards.forEach((data) => {
@@ -62,7 +60,7 @@ getAllInfo()
     });
 });
 
-export function addCard(data) {
+export function postCard(data) {
   return fetch(`${config.url}/cards`, {
     method: "POST",
     headers: config.headers,

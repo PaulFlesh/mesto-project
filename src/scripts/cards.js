@@ -1,15 +1,13 @@
-import { getAllInfo, userId, changeLikeStatus, removeCard } from "./api.js";
-import { openImage, closePopup, placePopup } from "./modal.js";
-import { toggleButtonState, validationConfig } from "./validation.js";
+import { userId, changeLikeStatus, removeCard, postCard } from "./api.js";
+import { openImage, closePopup, placePopup, renderLoading } from "./modal.js";
 
-const formPlace = document.querySelector('[name="element-creation"]');
+export const formPlace = document.querySelector('[name="element-creation"]');
 export const elementsList = document.querySelector('.elements__list');
 export const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
 export const placeTemplateName = document.querySelector('#element-title');
 export const placeTemplateImage = document.querySelector('#element-image');
 const buttonPostPopup = document.querySelector('.form__submit-button_create-element');
 
-//удаление карточки
 const clickButtonDelete = (element) => {
   element.remove();
   element = null;
@@ -47,7 +45,7 @@ export const createCard = (dataCard, userId, handleChangeLikeStatus, handleDelet
     placeBin.remove();
   }
   placeImage.addEventListener('click', () => openImage(dataCard));
-  placeBin.addEventListener('click', () => handleDeleteCard(cardElement, dataCard._id));
+  placeBin.addEventListener('click', () => handleDeleteCard(placeElement, dataCard._id));
   placeLike.addEventListener('click', () => {handleChangeLikeStatus(placeElement, dataCard._id, placeLike.classList.contains('element__like_active'))});
   return placeElement;
 }
@@ -75,19 +73,16 @@ export const renderCard = (data, container, userId) => {
 
 export const addPlace = (evt) => {
   evt.preventDefault();
-  //renderLoading(buttonPostPopup, true);
-  createCard({ name: placeTemplateName.value, link: placeTemplateImage.value })
+  renderLoading(buttonPostPopup, true);
+  postCard({ name: placeTemplateName.value, link: placeTemplateImage.value })
   .then((dataFromServer) => {
     renderCard(dataFromServer, elementsList, userId);
   })
   .catch(err => console.log(err))
-  /*
   .finally(() => {
     renderLoading(buttonPostPopup, false);
-  })
-  */
+  });
   formPlace.reset();
-  toggleButtonState(buttonPostPopup, false, validationConfig);
   closePopup(placePopup);
 }
 formPlace.addEventListener('submit', addPlace);
