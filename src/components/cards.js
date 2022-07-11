@@ -1,4 +1,5 @@
-import { userId, changeLikeStatus, removeCard, postCard } from "./api.js";
+import { userId } from "./index.js";
+import { changeLikeStatus, removeCard, postCard } from "./api.js";
 import { openImage, closePopup, placePopup, renderLoading } from "./modal.js";
 import { toggleButtonState } from "./validation.js";
 

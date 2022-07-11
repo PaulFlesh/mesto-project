@@ -6,8 +6,6 @@ const config = {
   },
 };
 
-let userId = null;
-
 const checkResponse = (response) => {
   return response.ok ? response.json() : Promise.reject(response);
 };
@@ -80,4 +78,4 @@ function changeLikeStatus(dataId, isLike) {
   }).then(checkResponse);
 }
 
-export { userId, getUserInfo, getInitialCards, editProfile, editAvatar, getAllInfo, postCard, removeCard, likeCard, unlikeCard, changeLikeStatus }
+export { getUserInfo, getInitialCards, editProfile, editAvatar, getAllInfo, postCard, removeCard, likeCard, unlikeCard, changeLikeStatus }
