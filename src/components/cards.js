@@ -1,11 +1,12 @@
 import { userId, changeLikeStatus, removeCard, postCard } from "./api.js";
 import { openImage, closePopup, placePopup, renderLoading } from "./modal.js";
+import { toggleButtonState } from "./validation.js";
 
-export const formPlace = document.querySelector('[name="element-creation"]');
-export const elementsList = document.querySelector('.elements__list');
-export const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
-export const placeTemplateName = document.querySelector('#element-title');
-export const placeTemplateImage = document.querySelector('#element-image');
+const formPlace = document.querySelector('[name="element-creation"]');
+const elementsList = document.querySelector('.elements__list');
+const placeTemplate = document.querySelector('#element-template').content.querySelector('.element');
+const placeTemplateName = document.querySelector('#element-title');
+const placeTemplateImage = document.querySelector('#element-image');
 const buttonPostPopup = document.querySelector('.form__submit-button_create-element');
 
 const clickButtonDelete = (element) => {
@@ -30,7 +31,7 @@ const updateLikesState = (cardElement, likesArray, userId) => {
   }
 }
 
-export const createCard = (dataCard, userId, handleChangeLikeStatus, handleDeleteCard) => {
+const createCard = (dataCard, userId, handleChangeLikeStatus, handleDeleteCard) => {
   const placeElement = placeTemplate.cloneNode(true);
   const placeName = placeElement.querySelector('.element__name');
   const placeImage = placeElement.querySelector('.element__image');
@@ -66,23 +67,36 @@ const handleChangeLikeStatus = (placeElement, cardId, isLiked) => {
     .catch(err => console.log(err));
 }
 
-export const renderCard = (data, container, userId) => {
+const renderCard = (data, container, userId) => {
   const place = createCard(data, userId, handleChangeLikeStatus, handleDeleteCard);
   container.prepend(place);
 }
-
-export const addPlace = (evt) => {
+const toggleButtonState = (button, isActive, inactiveButtonClass) => {
+  if(isActive){
+      button.classList.remove(inactiveButtonClass);
+      button.disabled = false;
+  } else {
+      button.classList.add(inactiveButtonClass);
+      button.disabled = 'disabled';
+  }
+}
+const addPlace = (evt) => {
   evt.preventDefault();
   renderLoading(buttonPostPopup, true);
   postCard({ name: placeTemplateName.value, link: placeTemplateImage.value })
   .then((dataFromServer) => {
     renderCard(dataFromServer, elementsList, userId);
   })
+  .then(() => {
+    formPlace.reset();
+    toggleButtonState(buttonPostPopup, false, 'form__submit-button_disabled');
+    closePopup(placePopup);
+  })
   .catch(err => console.log(err))
   .finally(() => {
     renderLoading(buttonPostPopup, false);
   });
-  formPlace.reset();
-  closePopup(placePopup);
 }
 formPlace.addEventListener('submit', addPlace);
+
+export { formPlace, elementsList, placeTemplate, placeTemplateName, placeTemplateImage, createCard, renderCard }

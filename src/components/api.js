@@ -1,6 +1,3 @@
-import { profileName, profession, avatarOnPage } from './profile.js';
-import { renderCard, elementsList } from './cards.js';
-
 const config = {
   url: 'https://mesto.nomoreparties.co/v1/plus-cohort-13',
   headers: {
@@ -9,89 +6,78 @@ const config = {
   },
 };
 
-export let userId = null;
+let userId = null;
 
-const onResponse = (response) => {
+const checkResponse = (response) => {
   return response.ok ? response.json() : Promise.reject(response);
 };
 
-export function getUserInfo() {
+function getUserInfo() {
   return fetch(`${config.url}/users/me`, {
     headers: config.headers,
-  }).then(onResponse);
+  }).then(checkResponse);
 }
 
-export function getInitialCards() {
+function getInitialCards() {
   return fetch(`${config.url}/cards`, {
     headers: config.headers,
-  }).then(onResponse);
+  }).then(checkResponse);
 }
 
-export function editProfile(data) {
+function editProfile(data) {
   return fetch(`${config.url}/users/me`, {
     method: "PATCH",
     headers: config.headers,
     body: JSON.stringify(data),
-  }).then(onResponse);
+  }).then(checkResponse);
 }
 
-export function editAvatar(data) {
+function editAvatar(data) {
   return fetch(`${config.url}/users/me/avatar`, {
     method: "PATCH",
     headers: config.headers,
     body: JSON.stringify(data),
-  }).then(onResponse);
+  }).then(checkResponse);
 }
 
-export function getAllInfo() {
+function getAllInfo() {
   return Promise.all([getInitialCards(), getUserInfo()])
 }
 
-// Выгружаем с сервера карточки из пула + данные пользователя 
-getAllInfo()
-  .then(([cards, user]) => {
-    profileName.textContent = user.name;
-    profession.textContent = user.about;
-    avatarOnPage.src = user.avatar;
-    userId = user._id;
-    
-    cards.reverse().forEach((data) => {
-      renderCard(data, elementsList, userId);
-    });
-});
-
-export function postCard(data) {
+function postCard(data) {
   return fetch(`${config.url}/cards`, {
     method: "POST",
     headers: config.headers,
     body: JSON.stringify(data),
-  }).then(onResponse);
+  }).then(checkResponse);
 }
 
-export function removeCard(dataId) {
+function removeCard(dataId) {
   return fetch(`${config.url}/cards/${dataId}`, {
     method: "DELETE",
     headers: config.headers,
-  }).then(onResponse);
+  }).then(checkResponse);
 }
 
-export function likeCard(dataId) {
+function likeCard(dataId) {
   return fetch(`${config.url}/cards/likes/${dataId}`, {
     method: "PUT",
     headers: config.headers,
-  }).then(onResponse);
+  }).then(checkResponse);
 }
 
-export function unlikeCard(dataId) {
+function unlikeCard(dataId) {
   return fetch(`${config.url}/cards/likes/${dataId}`, {
     method: "DELETE",
     headers: config.headers,
-  }).then(onResponse);
+  }).then(checkResponse);
 }
 
-export function changeLikeStatus(dataId, isLike) {
+function changeLikeStatus(dataId, isLike) {
   return fetch(`${config.url}/cards/likes/${dataId}`, {
     method: isLike ? "DELETE" : "PUT",
     headers: config.headers,
-  }).then(onResponse);
+  }).then(checkResponse);
 }
+
+export { userId, getUserInfo, getInitialCards, editProfile, editAvatar, getAllInfo, postCard, removeCard, likeCard, unlikeCard, changeLikeStatus }

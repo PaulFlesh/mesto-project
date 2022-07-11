@@ -1,9 +1,9 @@
-export const showError = (errorElement, inputElement, inputErrorClass) => {
+const showError = (errorElement, inputElement, inputErrorClass) => {
   errorElement.textContent = inputElement.validationMessage;
   inputElement.classList.add(inputErrorClass);
 }
 
-export const hideError = (errorElement, inputElement, inputErrorClass) => {
+const hideError = (errorElement, inputElement, inputErrorClass) => {
   errorElement.textContent = inputElement.validationMessage;
   inputElement.classList.remove(inputErrorClass);
 }
@@ -18,7 +18,7 @@ const checkInputValidity = (formElement, inputElement, config) => {
   }
 }
 
-export const toggleButtonState = (button, isActive, inactiveButtonClass) => {
+const toggleButtonState = (button, isActive, inactiveButtonClass) => {
   if(isActive){
       button.classList.remove(inactiveButtonClass);
       button.disabled = false;
@@ -51,7 +51,7 @@ const enableValidation = ({formSelector, ...rest}) => {
   })
 }
 
-export const validationConfig = {
+const validationConfig = {
   formSelector: '.form',
   inputSelector: '.form__item',
   submitButtonSelector: '.form__submit-button',
@@ -62,3 +62,5 @@ export const validationConfig = {
 const {inputSelector, ...rest} = validationConfig;
 
 enableValidation(validationConfig);
+
+export { showError, hideError, toggleButtonState, validationConfig }

@@ -1,7 +1,7 @@
 {
   "name": "mesto-project",
   "version": "1.0.0",
-  "description": "modal.js - Взаимодействие с модальными окнами (открытие, закрытие),\r data.js - Начальный массив с карточками,\r cards.js - Взаимодействие формы создания нового места,\r validation.js - Валидация всех форм в проекте,\r utils.js - Всякое разное",
+  "description": "Место",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
