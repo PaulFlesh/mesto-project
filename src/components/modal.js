@@ -1,5 +1,5 @@
 import { avatarInput, nameInput, jobInput, profileName, profession, formAvatar, formProfile } from "./profile.js";
-import { clearError } from "./utils.js";
+import { clearError, renderLoading } from "./utils.js";
 import { formPlace } from "./cards.js";
 import { getUserInfo } from "./api.js";
 

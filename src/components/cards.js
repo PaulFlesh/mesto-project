@@ -71,15 +71,7 @@ const renderCard = (data, container, userId) => {
   const place = createCard(data, userId, handleChangeLikeStatus, handleDeleteCard);
   container.prepend(place);
 }
-const toggleButtonState = (button, isActive, inactiveButtonClass) => {
-  if(isActive){
-      button.classList.remove(inactiveButtonClass);
-      button.disabled = false;
-  } else {
-      button.classList.add(inactiveButtonClass);
-      button.disabled = 'disabled';
-  }
-}
+
 const addPlace = (evt) => {
   evt.preventDefault();
   renderLoading(buttonPostPopup, true);
