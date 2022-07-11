@@ -6,7 +6,9 @@ import "./profile.js";
 import "./cards.js";
 import "./validation.js";
 
-import { getAllInfo } from "./api.js";
+import { getAllInfo, userId } from "./api.js";
+import { profileName, profession, avatarOnPage } from "./profile.js";
+import { renderCard, elementsList } from "./cards.js";
 // Выгружаем с сервера карточки из пула + данные пользователя 
 getAllInfo()
   .then(([cards, user]) => {
