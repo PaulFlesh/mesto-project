@@ -14,9 +14,9 @@ export const validationConfig = {
   inputErrorClass: "popup__input_type_error",
 };
 export const apiConfig = {
-  url: "https://mesto.nomoreparties.co/v1/plus-cohort-13",
-  headers: {
+  url: "https://api.mesto.nomoredomains.ru",
+  /*headers: {
     authorization: "eeb10f4c-568d-4124-bc82-28113d2b839d",
     "Content-Type": "application/json",
-  }
+  }*/
 }
