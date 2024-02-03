@@ -19,6 +19,7 @@ module.exports = {
   }],
   deploy: {
     production: {
+      key: "/c/Users/M2entertainment/.ssh/id_ed25519_yacloud",
       user: DEPLOY_USER,
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
