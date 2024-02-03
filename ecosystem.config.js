@@ -12,7 +12,7 @@ const {
 module.exports = {
   apps: [{
     name: "mesto-frontend",
-    script: "dist/app.js",
+    script: "dist/index.hmtl",
     env_production: {
       NODE_ENV: "production"
     },
