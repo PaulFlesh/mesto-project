@@ -15,8 +15,8 @@ export const validationConfig = {
 };
 export const apiConfig = {
   url: "https://api.mesto.nomoredomainsmonster.ru",
-  /*headers: {
+  headers: {
     authorization: "eeb10f4c-568d-4124-bc82-28113d2b839d",
     "Content-Type": "application/json",
-  }*/
+  }
 }
